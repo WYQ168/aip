@@ -11,7 +11,7 @@
  Target Server Version : 80039 (8.0.39-0ubuntu0.22.04.1)
  File Encoding         : 65001
 
- Date: 27/10/2024 14:05:45
+ Date: 27/10/2024 17:28:30
 */
 
 SET NAMES utf8mb4;
@@ -517,7 +517,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 125 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 131 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -547,6 +547,12 @@ INSERT INTO `sys_logininfor` VALUES (121, 'admin', '127.0.0.1', '内网IP', 'Chr
 INSERT INTO `sys_logininfor` VALUES (122, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-27 13:51:55');
 INSERT INTO `sys_logininfor` VALUES (123, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-10-27 14:00:41');
 INSERT INTO `sys_logininfor` VALUES (124, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-27 14:00:45');
+INSERT INTO `sys_logininfor` VALUES (125, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-27 15:18:09');
+INSERT INTO `sys_logininfor` VALUES (126, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-10-27 16:49:13');
+INSERT INTO `sys_logininfor` VALUES (127, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-27 16:49:16');
+INSERT INTO `sys_logininfor` VALUES (128, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-10-27 16:51:05');
+INSERT INTO `sys_logininfor` VALUES (129, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-27 16:51:09');
+INSERT INTO `sys_logininfor` VALUES (130, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-27 16:52:04');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -574,7 +580,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2020 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2024 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -666,8 +672,8 @@ INSERT INTO `sys_menu` VALUES (1059, '预览代码', 116, 5, '#', '', '', '', 1,
 INSERT INTO `sys_menu` VALUES (1060, '生成代码', 116, 6, '#', '', '', '', 1, 0, 'F', '0', '0', 'tool:gen:code', '#', 'admin', '2024-10-27 09:24:22', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2000, '数据平台', 0, 0, 'datePlaent', 'dataPlatform/index', NULL, '', 1, 0, 'C', '0', '0', '', '#', 'admin', '2024-10-27 09:36:23', 'admin', '2024-10-27 13:17:52', '');
 INSERT INTO `sys_menu` VALUES (2001, '碳排放数据管理', 0, 1, 'carbonEmissionsDataManagement', '', NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 09:36:53', 'admin', '2024-10-27 11:20:57', '');
-INSERT INTO `sys_menu` VALUES (2002, '碳资产价值监控', 0, 2, '2', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, '#', 'admin', '2024-10-27 09:37:09', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2003, '诊断工具', 0, 3, '3', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, '#', 'admin', '2024-10-27 09:37:21', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2002, '碳资产价值监控', 0, 2, 'carbonAssetValueMonitoring', NULL, NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 09:37:09', 'admin', '2024-10-27 16:50:38', '');
+INSERT INTO `sys_menu` VALUES (2003, '诊断工具', 0, 3, 'diagnosticTools', NULL, NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 09:37:21', 'admin', '2024-10-27 16:50:07', '');
 INSERT INTO `sys_menu` VALUES (2004, '资产价值管理', 0, 4, '4', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, '#', 'admin', '2024-10-27 09:37:29', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2005, '碳排放强度诊断', 0, 5, '5', NULL, NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 09:37:44', 'admin', '2024-10-27 09:39:40', '');
 INSERT INTO `sys_menu` VALUES (2006, '碳足迹管理LCA', 0, 6, '6', NULL, NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 09:37:52', 'admin', '2024-10-27 09:39:57', '');
@@ -684,6 +690,10 @@ INSERT INTO `sys_menu` VALUES (2016, '排放因子编辑', 2010, 1, 'emissionFac
 INSERT INTO `sys_menu` VALUES (2017, '资产规模管理', 2002, 0, 'assetSizeManagement', 'carbonAssetValueMonitoring/assetSizeManagement/index', NULL, '', 1, 0, 'C', '0', '0', NULL, '#', 'admin', '2024-10-27 13:28:15', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2018, '碳市场行情监控', 2002, 1, 'carbonMarketMonitoring', 'carbonAssetValueMonitoring/carbonMarketMonitoring/index', NULL, '', 1, 0, 'C', '0', '0', NULL, '#', 'admin', '2024-10-27 13:28:56', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2019, '碳资产价值管理', 2002, 2, 'carbonAssetValueManagement', 'carbonAssetValueMonitoring/carbonAssetValueManagement/index', NULL, '', 1, 0, 'C', '0', '0', NULL, '#', 'admin', '2024-10-27 13:30:00', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2020, '排放总量诊断', 2003, 0, 'totalEmissionsDiagnosis', 'diagnosticTools/totalEmissionsDiagnosis/index', NULL, '', 1, 0, 'C', '0', '0', '', '#', 'admin', '2024-10-27 16:38:39', 'admin', '2024-10-27 16:49:04', '');
+INSERT INTO `sys_menu` VALUES (2021, '排放强度诊断', 2003, 1, 'emissionIntensityDiagnosis', 'diagnosticTools/emissionIntensityDiagnosis/index', NULL, '', 1, 0, 'C', '0', '0', '', '#', 'admin', '2024-10-27 16:42:16', 'admin', '2024-10-27 16:47:50', '');
+INSERT INTO `sys_menu` VALUES (2022, '排放趋势诊断', 2003, 2, 'emissionTrendDiagnosis', 'diagnosticTools/emissionTrendDiagnosis/index', NULL, '', 1, 0, 'C', '0', '0', '', '#', 'admin', '2024-10-27 16:43:37', 'admin', '2024-10-27 16:48:22', '');
+INSERT INTO `sys_menu` VALUES (2023, '履约风险诊断', 2003, 3, 'performanceRiskDiagnosis', 'diagnosticTools/performanceRiskDiagnosis/index', NULL, '', 1, 0, 'C', '0', '0', '', '#', 'admin', '2024-10-27 16:44:29', 'admin', '2024-10-27 16:48:44', '');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -735,7 +745,7 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 183 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 194 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -823,6 +833,17 @@ INSERT INTO `sys_oper_log` VALUES (179, '菜单管理', 2, 'com.ruoyi.web.contro
 INSERT INTO `sys_oper_log` VALUES (180, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"carbonEmissionsDataManagement/emissionFactorManagement/index\",\"createTime\":\"2024-10-27 11:30:00\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2016,\"menuName\":\"排放因子编辑\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2010,\"path\":\"emissionFactorManagement\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 14:00:14', 7);
 INSERT INTO `sys_oper_log` VALUES (181, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"carbonEmissionsDataManagement/emissionFactorSetting/index\",\"createTime\":\"2024-10-27 11:29:26\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2015,\"menuName\":\"排放因子设置\",\"menuType\":\"C\",\"orderNum\":0,\"params\":{},\"parentId\":2010,\"path\":\"emissionFactorSetting\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 14:00:35', 10);
 INSERT INTO `sys_oper_log` VALUES (182, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"carbonEmissionsDataManagement/emissionFactorSetting/index\",\"createTime\":\"2024-10-27 11:29:26\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2015,\"menuName\":\"排放因子设置\",\"menuType\":\"C\",\"orderNum\":0,\"params\":{},\"parentId\":2010,\"path\":\"emissionFactorSetting\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 14:02:38', 11);
+INSERT INTO `sys_oper_log` VALUES (183, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"碳排放诊断\",\"menuType\":\"C\",\"orderNum\":0,\"params\":{},\"parentId\":2003,\"path\":\"carbonEmissionDiagnosis\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:38:39', 15);
+INSERT INTO `sys_oper_log` VALUES (184, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2024-10-27 16:38:39\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2020,\"menuName\":\"排放总量诊断\",\"menuType\":\"C\",\"orderNum\":0,\"params\":{},\"parentId\":2003,\"path\":\"totalEmissionsDiagnosis\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:41:05', 13);
+INSERT INTO `sys_oper_log` VALUES (185, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"排放强度诊断\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2003,\"path\":\"emissionIntensityDiagnosis\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:42:16', 15);
+INSERT INTO `sys_oper_log` VALUES (186, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"排放趋势诊断\",\"menuType\":\"C\",\"orderNum\":2,\"params\":{},\"parentId\":2003,\"path\":\"emissionTrendDiagnosis\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:43:37', 13);
+INSERT INTO `sys_oper_log` VALUES (187, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"履约风险诊断\",\"menuType\":\"C\",\"orderNum\":3,\"params\":{},\"parentId\":2003,\"path\":\"performanceRiskDiagnosis\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:44:29', 15);
+INSERT INTO `sys_oper_log` VALUES (188, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"diagnosticTools/emissionIntensityDiagnosis/index\",\"createTime\":\"2024-10-27 16:42:16\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2021,\"menuName\":\"排放强度诊断\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2003,\"path\":\"emissionIntensityDiagnosis\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:47:50', 15);
+INSERT INTO `sys_oper_log` VALUES (189, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"diagnosticTools/emissionTrendDiagnosis/index\",\"createTime\":\"2024-10-27 16:43:37\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2022,\"menuName\":\"排放趋势诊断\",\"menuType\":\"C\",\"orderNum\":2,\"params\":{},\"parentId\":2003,\"path\":\"emissionTrendDiagnosis\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:48:22', 9);
+INSERT INTO `sys_oper_log` VALUES (190, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"diagnosticTools/performanceRiskDiagnosis/index\",\"createTime\":\"2024-10-27 16:44:29\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2023,\"menuName\":\"履约风险诊断\",\"menuType\":\"C\",\"orderNum\":3,\"params\":{},\"parentId\":2003,\"path\":\"performanceRiskDiagnosis\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:48:44', 9);
+INSERT INTO `sys_oper_log` VALUES (191, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"diagnosticTools/totalEmissionsDiagnosis/index\",\"createTime\":\"2024-10-27 16:38:39\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2020,\"menuName\":\"排放总量诊断\",\"menuType\":\"C\",\"orderNum\":0,\"params\":{},\"parentId\":2003,\"path\":\"totalEmissionsDiagnosis\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:49:04', 13);
+INSERT INTO `sys_oper_log` VALUES (192, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2024-10-27 09:37:21\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2003,\"menuName\":\"诊断工具\",\"menuType\":\"M\",\"orderNum\":3,\"params\":{},\"parentId\":0,\"path\":\"diagnosticTools\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:50:07', 13);
+INSERT INTO `sys_oper_log` VALUES (193, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2024-10-27 09:37:09\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2002,\"menuName\":\"碳资产价值监控\",\"menuType\":\"M\",\"orderNum\":2,\"params\":{},\"parentId\":0,\"path\":\"carbonAssetValueMonitoring\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:50:38', 7);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1024,7 +1045,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-10-27 14:00:45', 'admin', '2024-10-27 09:24:22', '', '2024-10-27 14:00:45', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-10-27 16:52:05', 'admin', '2024-10-27 09:24:22', '', '2024-10-27 16:52:04', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-10-27 09:24:22', 'admin', '2024-10-27 09:24:22', '', NULL, '测试员');
 
 -- ----------------------------

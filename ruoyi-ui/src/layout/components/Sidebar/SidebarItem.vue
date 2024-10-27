@@ -98,3 +98,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.nest-menu {
+  width: 1100%;
+}
+</style>
