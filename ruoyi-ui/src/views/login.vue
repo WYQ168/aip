@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-      <h3 class="title">碳资产管理平台</h3>
+      <h3 class="title">登录</h3>
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"
@@ -55,9 +55,9 @@
       </el-form-item>
     </el-form>
     <!--  底部  -->
-    <div class="el-login-footer">
-      <span>Copyright © 2018-2024 ruoyi.vip All Rights Reserved.</span>
-    </div>
+<!--    <div class="el-login-footer">-->
+<!--      <span>Copyright © 2018-2024 ruoyi.vip All Rights Reserved.</span>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -161,20 +161,25 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-image: url("../assets/images/login-background.jpg");
+  /*background-image: url("../assets/images/login-background.jpg");*/
+  background-color: #edeef0;
   background-size: cover;
 }
 .title {
   margin: 0px auto 30px auto;
-  text-align: center;
+  text-align: left;
   color: #707070;
+  font-weight: bold;
 }
 
 .login-form {
   border-radius: 6px;
   background: #ffffff;
-  width: 400px;
-  padding: 25px 25px 5px 25px;
+  width: 45%;
+  position: absolute;
+  right: 0;
+  padding: 155px 55px 55px 55px;
+  height: 100%;
   .el-input {
     height: 38px;
     input {
