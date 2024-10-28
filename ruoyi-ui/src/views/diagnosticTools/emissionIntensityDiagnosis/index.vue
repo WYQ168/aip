@@ -1,21 +1,26 @@
 <template>
   <div class="carbon-analysis-dashboard">
-    <!-- 标准强度和强度配额展示 -->
-    <el-card class="dashboard-cards">
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <el-card class="metric-card">
-            <h2 class="metric-title">当前的执行强度</h2>
-            <p class="metric-value highlight-red">120%</p>
-          </el-card>
-        </el-col>
-        <el-col :span="12">
-          <el-card class="metric-card">
-            <h2 class="metric-title">当前的强度配额</h2>
-            <p class="metric-value highlight-red">800%</p>
-          </el-card>
-        </el-col>
-      </el-row>
+    <!-- 碳排放强度诊断 -->
+    <el-card class="diagnosis-card">
+      <h2>碳排放强度诊断</h2>
+      <div class="diagnosis-content">
+        <div class="intensity-comparison">
+          <div class="intensity-value">
+            <p>当前强度</p>
+            <hr />
+            <p>强度配额</p>
+          </div>
+          <div class="intensity-value">
+            <p><strong>120 tCO₂/t</strong></p>
+            <hr />
+            <p><strong>100 tCO₂/t</strong></p>
+          </div>
+        </div>
+        <div class="alert-section">
+          <el-icon><i class="el-icon-warning"></i></el-icon>
+          <span class="alert-text">超标 20%</span>
+        </div>
+      </div>
     </el-card>
 
     <!-- 碳排放表格 -->
@@ -56,35 +61,53 @@ export default {
   padding: 20px;
 }
 
-.dashboard-cards {
-  padding: 20px;
-}
-
-.metric-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.diagnosis-card {
+  margin-top: 20px;
   padding: 20px;
   background-color: #f7f7f7;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.diagnosis-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.intensity-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  width:1000px;
   text-align: center;
 }
 
-.metric-title {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.metric-value {
-  font-size: 36px;
+.intensity-value p {
   margin: 0;
+  font-size: 18px;
 }
 
-.highlight-red {
+.alert-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 112px;
+  gap: 10px;
   color: #f5222d;
+  font-size: 100px;
+  letter-spacing: 40px; /* 增加字间距 */
 }
 
+.alert-text {
+  font-weight: bold;
+}
 .table-card {
   margin-top: 20px;
   padding: 20px;

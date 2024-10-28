@@ -21,25 +21,36 @@
 
     <!-- 智能履约建议 -->
     <el-card class="suggestion-section" style="margin-top: 30px;">
-      <h2><el-icon><i class="el-icon-guide"></i></el-icon> 智能履约建议</h2>
+      <h2><el-icon><i class="el-icon-guide"></i></el-icon> 履约建议</h2>
+      <el-button type="primary" style="float: right;position:relative;top:-50px;" @click="generateSuggestions">生成建议</el-button>
       <el-row :gutter="20" class="suggestion-group">
         <el-col :span="24">
           <el-card class="suggestion-card">
-            <p class="suggestion">建议组合一：() CEA + () CCER + () 绿电</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <p class="suggestion" style="margin: 0;">方案一：<span style="color: red;">()</span> <span style="color: red;">CEA</span> + <span style="color: red;">()</span> <span style="color: red;">CCER</span> + () 绿电</p>
+              <el-button type="info">详情</el-button>
+            </div>
           </el-card>
         </el-col>
         <el-col :span="24">
           <el-card class="suggestion-card">
-            <p class="suggestion">建议组合二：() CEA + () CCER + () 绿电 + () VCS</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <p class="suggestion" style="margin: 0;">方案二：<span style="color: red;">()</span> <span style="color: red;">CEA</span> + <span style="color: red;">()</span> <span style="color: red;">CCER</span> + () 绿电 + () VCS</p>
+              <el-button type="info">详情</el-button>
+            </div>
           </el-card>
         </el-col>
         <el-col :span="24">
           <el-card class="suggestion-card">
-            <p class="suggestion">建议组合三：() CEA + () CCER + () 绿电 + () 碳普惠</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <p class="suggestion" style="margin: 0;">方案三：<span style="color: red;">()</span> <span style="color: red;">CEA</span> + <span style="color: red;">()</span> <span style="color: red;">CCER</span> + () 绿电 + () 碳普惠</p>
+              <el-button type="info">详情</el-button>
+            </div>
           </el-card>
         </el-col>
       </el-row>
     </el-card>
+
   </div>
 </template>
 
@@ -107,6 +118,6 @@ export default {
 .suggestion {
   font-size: 24px;
   font-weight: bold;
-  color: #f5222d;
+  color: #999
 }
 </style>
