@@ -1,6 +1,6 @@
 <template>
   <div class="carbon-asset-dashboard">
-    <h2>碳资产占比</h2>
+    <h2>碳资产构成</h2>
 
     <!-- 扇形环形图 -->
     <el-card class="chart-card">
@@ -16,9 +16,8 @@
     <!-- 碳资产表格 -->
     <el-table :data="tableData" border style="width: 100%; margin-top: 20px;">
       <el-table-column prop="type" label="碳资产类型" />
-      <el-table-column prop="source" label="来源" />
-      <el-table-column prop="quantity" label="数据量" />
-      <el-table-column prop="remark" label="备注" />
+      <el-table-column prop="quantity" label="数据" />
+      <el-table-column prop="remark" label="项目信息" />
       <el-table-column label="操作" width="150">
         <template #default="scope">
           <el-button type="text" icon="el-icon-edit" @click="openDialog('edit', scope.$index)"></el-button>
