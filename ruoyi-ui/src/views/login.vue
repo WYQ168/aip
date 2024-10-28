@@ -162,7 +162,7 @@ export default {
   align-items: center;
   height: 100%;
   /*background-image: url("../assets/images/login-background.jpg");*/
-  background-color: #edeef0;
+  background-color: #646b6e;
   background-size: cover;
 }
 .title {

@@ -1,22 +1,21 @@
 <template>
-  <div class="carbon-annual-report">
+  <div class="carbon-monthly-report">
     <el-header>
       <h2>碳排放管理系统 - 碳排放年报</h2>
     </el-header>
 
     <el-row class="filter-row" type="flex" justify="start">
       <el-col :span="10">
-        <el-select v-model="selectedYear" placeholder="选择年份" @change="fetchAnnualReportData">
-          <el-option
-            v-for="year in yearOptions"
-            :key="year"
-            :label="year"
-            :value="year">
-          </el-option>
-        </el-select>
+        <el-date-picker
+          v-model="selectedMonth"
+          type="month"
+          placeholder="选择年份"
+          format="YYYY"
+          @change="fetchMonthlyReportData"
+        ></el-date-picker>
       </el-col>
       <el-col :span="8">
-        <el-button type="primary" @click="fetchAnnualReportData">刷新报表</el-button>
+        <el-button type="primary" @click="fetchMonthlyReportData">刷新报表</el-button>
         <el-button type="primary" @click="exportReport" style="margin-left: 10px;">导出PDF</el-button>
       </el-col>
     </el-row>
@@ -24,39 +23,38 @@
     <el-row class="summary" type="flex" justify="space-between">
       <el-col :span="6" class="summary-box">
         <el-card>
-          <div>年度总排放量 (吨): {{ totalAnnualEmission }}</div>
-        </el-card>
-      </el-col>
-      <el-col :span="6" class="summary-box">
-        <el-card>
-          <div>合规天数: {{ compliantDays }}</div>
-        </el-card>
-      </el-col>
-      <el-col :span="6" class="summary-box">
-        <el-card>
-          <div>未合规天数: {{ nonCompliantDays }}</div>
+          <div>本月总排放量 (吨): {{ totalMonthlyEmission }}</div>
         </el-card>
       </el-col>
     </el-row>
 
     <el-row class="chart-row">
       <el-col :span="24">
-        <div ref="annualChart" class="chart"></div>
+        <div ref="monthlyChart" class="chart"></div>
       </el-col>
     </el-row>
 
-    <el-table :data="annualReportData" stripe style="width: 100%">
-      <el-table-column prop="month" label="月份" width="150" />
-      <el-table-column prop="monthlyEmission" label="月排放量 (吨)" width="180" />
-      <el-table-column prop="status" label="状态" width="100" />
-      <el-table-column prop="remarks" label="备注" width="200" />
-      <el-table-column label="操作" width="150">
-        <template v-slot="scope">
-          <el-button type="success" @click="viewDetail(scope.row)">查看</el-button>
-          <el-button type="warning" @click="editEntry(scope.row)">编辑</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+    <div>
+      <div class="chart-container">
+        <div ref="fuelChart" class="chart_class"></div>
+        <div ref="processChart" class="chart_class"></div>
+      </div>
+    </div>
+
+    <div>
+      <el-card>
+        <h2>报告内容</h2>
+        <el-table :data="tableData" border>
+          <el-table-column prop="emission" label="排放量" sortable></el-table-column>
+          <el-table-column prop="concentration" label="排放浓度" sortable></el-table-column>
+          <el-table-column prop="quantityComparison" label="排放量对比" sortable></el-table-column>
+          <el-table-column prop="intensityComparison" label="强度对比" sortable></el-table-column>
+          <el-table-column prop="temperatureComparison" label="温度对比" sortable></el-table-column>
+          <el-table-column prop="remainingQuantity" label="配额剩余量" sortable></el-table-column>
+        </el-table>
+      </el-card>
+    </div>
+
   </div>
 </template>
 
@@ -67,111 +65,205 @@
   export default {
     data() {
       return {
-        selectedYear: '',
-        yearOptions: Array.from({ length: 11 }, (_, i) => new Date().getFullYear() - i),
-        annualReportData: [],
-        totalAnnualEmission: 0,
+        selectedMonth: '',
+        monthlyReportData: [],
+        totalMonthlyEmission: 0,
         compliantDays: 0,
         nonCompliantDays: 0,
+        tableData: [
+          {
+            emission: '100',
+            concentration: '50',
+            quantityComparison: '10%',
+            intensityComparison: '5%',
+            temperatureComparison: '2%',
+            remainingQuantity: '20',
+          },
+          {
+            emission: '150',
+            concentration: '75',
+            quantityComparison: '15%',
+            intensityComparison: '10%',
+            temperatureComparison: '4%',
+            remainingQuantity: '30',
+          },
+        ],
       };
     },
     methods: {
-      fetchAnnualReportData() {
-        console.log('Fetching annual report data for:', this.selectedYear);
+      fetchMonthlyReportData() {
+        console.log('Fetching monthly report data for:', this.selectedMonth);
 
         // 示例数据，可替换为实际数据获取的API调用
-        this.annualReportData = [
-          { month: '2024-01', monthlyEmission: 100.5, status: '合规', remarks: '运行正常' },
-          { month: '2024-02', monthlyEmission: 200.0, status: '合规', remarks: '运行正常' },
-          { month: '2024-03', monthlyEmission: 150.0, status: '合规', remarks: '处理问题' },
-          { month: '2024-04', monthlyEmission: 90.0, status: '未合规', remarks: '能源浪费' },
-          { month: '2024-05', monthlyEmission: 70.3, status: '合规', remarks: '监控显示正常' },
-          { month: '2024-06', monthlyEmission: 110.6, status: '合规', remarks: '设备运行良好' },
-          { month: '2024-07', monthlyEmission: 130.1, status: '合规', remarks: '例行检查完成' },
-          { month: '2024-08', monthlyEmission: 80.7, status: '合规', remarks: '监测正常' },
-          { month: '2024-09', monthlyEmission: 90.5, status: '未合规', remarks: '报告延迟' },
-          { month: '2024-10', monthlyEmission: 140.0, status: '合规', remarks: '正常' },
-          { month: '2024-11', monthlyEmission: 125.3, status: '合规', remarks: '运行正常' },
-          { month: '2024-12', monthlyEmission: 95.8, status: '未合规', remarks: '减排措施不足' },
+        this.monthlyReportData = [
+          {date: '2021', emission: 290.5, source: '生产', status: '合规', remarks: '运行正常'},
+          {date: '2022', emission: 200.0, source: '运输', status: '合规', remarks: '运行正常'},
+          {date: '2023', emission: 150.5, source: '办公', status: '未合规', remarks: '有设备掉线'},
+          {date: '2024', emission: 200, source: '其他', status: '未合规', remarks: '无提交'},
+          // 添加更多数据...
         ];
 
-        this.calculateAnnualSummary();
+        this.calculateMonthlySummary();
         this.renderChart();
       },
-      calculateAnnualSummary() {
-        this.totalAnnualEmission = this.annualReportData.reduce((sum, item) => sum + item.monthlyEmission, 0).toFixed(2);
-        this.compliantDays = this.annualReportData.filter(item => item.status === '合规').length;
-        this.nonCompliantDays = this.annualReportData.filter(item => item.status === '未合规').length;
+      calculateMonthlySummary() {
+        this.totalMonthlyEmission = this.monthlyReportData.reduce((sum, item) => sum + item.emission, 0).toFixed(2);
+        this.compliantDays = this.monthlyReportData.filter(item => item.status === '合规').length;
+        this.nonCompliantDays = this.monthlyReportData.filter(item => item.status === '未合规').length;
       },
       renderChart() {
-        const chartDom = this.$refs.annualChart;
+        const chartDom = this.$refs.monthlyChart;
         const myChart = echarts.init(chartDom);
         const option = {
           title: {
-            text: `${this.selectedYear} 年碳排放量趋势`,
+            text: '碳排放量趋势',
           },
           tooltip: {
             trigger: 'axis',
           },
-          legend: {
-            data: ['月排放量 (吨)'],
-          },
           xAxis: {
             type: 'category',
-            data: this.annualReportData.map(item => item.month),
+            data: this.monthlyReportData.map(item => item.date),
           },
           yAxis: {
             type: 'value',
-            name: '月排放量 (吨)',
+            name: '碳排放量 (吨)',
           },
           series: [{
-            name: '月排放量 (吨)',
+            name: '碳排放量 (吨)',
             type: 'line',
-            data: this.annualReportData.map(item => item.monthlyEmission),
+            data: this.monthlyReportData.map(item => item.emission),
             smooth: true,
+            areaStyle: {}, // 填充效果
           }],
         };
         myChart.setOption(option);
       },
       exportReport() {
         const doc = new jsPDF();
-        doc.text('碳排放年报', 20, 20); // 添加标题
-        doc.text(`选择的年份: ${this.selectedYear}`, 20, 30); // 选择的年份
-        doc.save(`碳排放年报_${this.selectedYear}.pdf`);
+        doc.text('碳排放月报', 20, 20); // 添加标题
+        doc.text(`选择的月份: ${this.selectedMonth}`, 20, 30); // 选择的月份
+        doc.save(`碳排放月报_${this.selectedMonth}.pdf`);
       },
       viewDetail(row) {
-        alert(`查看详细信息: ${row.month}`);
+        alert(`查看详细信息: ${row.date}`);
       },
       editEntry(row) {
-        alert(`编辑信息: ${row.month}`);
+        alert(`编辑信息: ${row.date}`);
       },
+      initTBData() {
+        // 绘制第一个饼图: 排放来源占比
+        const fuelChartInstance = echarts.init(this.$refs.fuelChart);
+        const fuelOption = {
+          title: {
+            text: '排放来源',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'item',
+          },
+          series: [{
+            type: 'pie',
+            radius: '50%',
+            data: [
+              {value: 14, name: '化石燃料燃烧'},
+              {value: 4, name: '外购电力'},
+              {value: 35, name: '含碳产品过程排放'},
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
+              },
+            },
+          }],
+        };
+        fuelChartInstance.setOption(fuelOption);
+
+        // 绘制第二个饼图: 碳排放工序占比
+        const processChartInstance = echarts.init(this.$refs.processChart);
+        const processOption = {
+          title: {
+            text: '碳排放工序',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'item',
+          },
+          series: [{
+            type: 'pie',
+            radius: '50%',
+            data: [
+              {value: 135, name: '焦化'},
+              {value: 225, name: '烧结'},
+              {value: 210, name: '球团'},
+              {value: 115, name: '高炉炼铁'},
+              {value: 215, name: '转炉炼钢'},
+              {value: 515, name: '电炉炼钢'},
+              {value: 415, name: '精炼'},
+              {value: 315, name: '连铸'},
+              {value: 215, name: '钢压延加工'},
+              {value: 115, name: '石灰'},
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
+              },
+            },
+          }],
+        };
+        processChartInstance.setOption(processOption);
+      }
     },
     mounted() {
-      this.selectedYear = new Date().getFullYear();
-      this.fetchAnnualReportData(); // 初始加载报表数据
+      const currentMonth = new Date();
+      const month = currentMonth.getMonth() + 1 < 10 ? `0${currentMonth.getMonth() + 1}` : currentMonth.getMonth() + 1;
+      const year = currentMonth.getFullYear();
+      this.selectedMonth = `${year}-${month}`;
+      this.fetchMonthlyReportData(); // 初始加载报表数据
+      this.initTBData()
     },
   };
 </script>
 
 <style scoped>
-  .carbon-annual-report {
+  .carbon-monthly-report {
     padding: 20px;
   }
+
   .filter-row {
     margin-bottom: 20px;
   }
+
   .summary {
     margin: 20px 0;
   }
+
   .summary-box {
     padding: 15px;
   }
+
   .chart-row {
     margin-top: 20px;
   }
+
   .chart {
     width: 100%;
     height: 400px;
     background-color: #f5f7fa;
+  }
+
+  .chart-container {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+  }
+
+  .chart_class {
+    width: 50%;
+    height: 400px;
   }
 </style>

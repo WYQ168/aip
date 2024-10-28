@@ -26,16 +26,6 @@
           <div>本月总排放量 (吨): {{ totalMonthlyEmission }}</div>
         </el-card>
       </el-col>
-      <el-col :span="6" class="summary-box">
-        <el-card>
-          <div>合规天数: {{ compliantDays }}</div>
-        </el-card>
-      </el-col>
-      <el-col :span="6" class="summary-box">
-        <el-card>
-          <div>未合规天数: {{ nonCompliantDays }}</div>
-        </el-card>
-      </el-col>
     </el-row>
 
     <el-row class="chart-row">
@@ -44,19 +34,27 @@
       </el-col>
     </el-row>
 
-    <el-table :data="monthlyReportData" stripe style="width: 100%">
-      <el-table-column prop="date" label="日期" width="150"></el-table-column>
-      <el-table-column prop="emission" label="碳排放量 (吨)" width="180"></el-table-column>
-      <el-table-column prop="source" label="来源" width="150"></el-table-column>
-      <el-table-column prop="status" label="状态" width="100"></el-table-column>
-      <el-table-column prop="remarks" label="备注" width="200"></el-table-column>
-      <el-table-column label="操作" width="150">
-        <template v-slot="scope">
-          <el-button type="success" @click="viewDetail(scope.row)">查看</el-button>
-          <el-button type="warning" @click="editEntry(scope.row)">编辑</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+    <div>
+      <div class="chart-container">
+        <div ref="fuelChart" class="chart_class"></div>
+        <div ref="processChart" class="chart_class"></div>
+      </div>
+    </div>
+
+    <div>
+      <el-card>
+        <h2>报告内容</h2>
+        <el-table :data="tableData" border>
+          <el-table-column prop="emission" label="排放量" sortable></el-table-column>
+          <el-table-column prop="concentration" label="排放浓度" sortable></el-table-column>
+          <el-table-column prop="quantityComparison" label="排放量对比" sortable></el-table-column>
+          <el-table-column prop="intensityComparison" label="强度对比" sortable></el-table-column>
+          <el-table-column prop="temperatureComparison" label="温度对比" sortable></el-table-column>
+          <el-table-column prop="remainingQuantity" label="配额剩余量" sortable></el-table-column>
+        </el-table>
+      </el-card>
+    </div>
+
   </div>
 </template>
 
@@ -72,6 +70,24 @@
         totalMonthlyEmission: 0,
         compliantDays: 0,
         nonCompliantDays: 0,
+        tableData: [
+          {
+            emission: '100',
+            concentration: '50',
+            quantityComparison: '10%',
+            intensityComparison: '5%',
+            temperatureComparison: '2%',
+            remainingQuantity: '20',
+          },
+          {
+            emission: '150',
+            concentration: '75',
+            quantityComparison: '15%',
+            intensityComparison: '10%',
+            temperatureComparison: '4%',
+            remainingQuantity: '30',
+          },
+        ],
       };
     },
     methods: {
@@ -80,10 +96,10 @@
 
         // 示例数据，可替换为实际数据获取的API调用
         this.monthlyReportData = [
-          { date: '2024-10-01', emission: 100.5, source: '生产', status: '合规', remarks: '运行正常' },
-          { date: '2024-10-02', emission: 200.0, source: '运输', status: '合规', remarks: '运行正常' },
-          { date: '2024-10-03', emission: 50.5, source: '办公', status: '未合规', remarks: '有设备掉线' },
-          { date: '2024-10-04', emission: 0, source: '其他', status: '未合规', remarks: '无提交' },
+          {date: '2024-10-01', emission: 100.5, source: '生产', status: '合规', remarks: '运行正常'},
+          {date: '2024-10-02', emission: 200.0, source: '运输', status: '合规', remarks: '运行正常'},
+          {date: '2024-10-03', emission: 50.5, source: '办公', status: '未合规', remarks: '有设备掉线'},
+          {date: '2024-10-04', emission: 0, source: '其他', status: '未合规', remarks: '无提交'},
           // 添加更多数据...
         ];
 
@@ -135,6 +151,72 @@
       editEntry(row) {
         alert(`编辑信息: ${row.date}`);
       },
+      initTBData() {
+        // 绘制第一个饼图: 排放来源占比
+        const fuelChartInstance = echarts.init(this.$refs.fuelChart);
+        const fuelOption = {
+          title: {
+            text: '排放来源',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'item',
+          },
+          series: [{
+            type: 'pie',
+            radius: '50%',
+            data: [
+              {value: 45, name: '化石燃料燃烧'},
+              {value: 30, name: '外购电力'},
+              {value: 25, name: '含碳产品过程排放'},
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
+              },
+            },
+          }],
+        };
+        fuelChartInstance.setOption(fuelOption);
+
+        // 绘制第二个饼图: 碳排放工序占比
+        const processChartInstance = echarts.init(this.$refs.processChart);
+        const processOption = {
+          title: {
+            text: '碳排放工序',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'item',
+          },
+          series: [{
+            type: 'pie',
+            radius: '50%',
+            data: [
+              {value: 35, name: '焦化'},
+              {value: 25, name: '烧结'},
+              {value: 20, name: '球团'},
+              {value: 15, name: '高炉炼铁'},
+              {value: 25, name: '转炉炼钢'},
+              {value: 55, name: '电炉炼钢'},
+              {value: 45, name: '精炼'},
+              {value: 35, name: '连铸'},
+              {value: 25, name: '钢压延加工'},
+              {value: 15, name: '石灰'},
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
+              },
+            },
+          }],
+        };
+        processChartInstance.setOption(processOption);
+      }
     },
     mounted() {
       const currentMonth = new Date();
@@ -142,6 +224,7 @@
       const year = currentMonth.getFullYear();
       this.selectedMonth = `${year}-${month}`;
       this.fetchMonthlyReportData(); // 初始加载报表数据
+      this.initTBData()
     },
   };
 </script>
@@ -150,21 +233,37 @@
   .carbon-monthly-report {
     padding: 20px;
   }
+
   .filter-row {
     margin-bottom: 20px;
   }
+
   .summary {
     margin: 20px 0;
   }
+
   .summary-box {
     padding: 15px;
   }
+
   .chart-row {
     margin-top: 20px;
   }
+
   .chart {
     width: 100%;
     height: 400px;
     background-color: #f5f7fa;
+  }
+
+  .chart-container {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+  }
+
+  .chart_class {
+    width: 50%;
+    height: 400px;
   }
 </style>
