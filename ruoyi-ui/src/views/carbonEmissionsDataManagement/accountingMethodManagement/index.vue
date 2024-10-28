@@ -10,23 +10,10 @@
     <!-- 数据表格 -->
     <el-table :data="tableData" border style="width: 100%;">
       <el-table-column prop="index" label="序号"/>
-      <el-table-column label="选择活动数据">
-        <template #default="scope">
-          <el-select
-            v-model="scope.row.activity"
-            placeholder="选择活动数据"
-            style="width: 100%;"
-            @change="generateResult(scope.row)"
-          >
-            <el-option
-              v-for="activity in activities"
-              :key="activity.value"
-              :label="activity.label"
-              :value="activity.value"
-            />
-          </el-select>
-        </template>
-      </el-table-column>
+
+      <!-- 固定活动数据列 -->
+      <el-table-column prop="activity" label="选择活动数据" />
+
       <el-table-column label="选择排放因子">
         <template #default="scope">
           <el-select
@@ -44,7 +31,9 @@
           </el-select>
         </template>
       </el-table-column>
+
       <el-table-column prop="result" label="计算结果" width="180" />
+
       <el-table-column label="操作" width="180">
         <template #default="scope">
           <el-button type="text" @click="editRow(scope.$index)">编辑</el-button>
@@ -60,15 +49,6 @@ export default {
   data() {
     return {
       tableData: [],
-      activities: [
-        { label: '化石燃料', value: 'fossilFuel' },
-        { label: '过程原料', value: 'productiveMaterial' },
-        { label: '外购电力', value: 'externalElectricity' },
-        { label: '自发电力', value: 'internalElectricity' },
-        { label: '外购热力', value: 'externalHeat' },
-        { label: '自产热力', value: 'internalHeat' },
-        { label: '固碳产品', value: 'carbonProduct' },
-      ],
       emissionFactors: [
         { label: '煤炭排放因子', value: 'coal' },
         { label: '天然气排放因子', value: 'naturalGas' },
@@ -83,11 +63,11 @@ export default {
   },
   methods: {
     initializeTableData() {
-      // 初始化 20 条示例数据
+      // 初始化 20 条示例数据，随机分配 "外购电力1" 或 "外购电力2"
       for (let i = 1; i <= 20; i++) {
         this.tableData.push({
           index: i,
-          activity: this.activities[Math.floor(Math.random() * this.activities.length)].value,
+          activity: Math.random() > 0.5 ? '外购电力1' : '外购电力2',
           factor: this.emissionFactors[Math.floor(Math.random() * this.emissionFactors.length)].value,
           result: `${(Math.random() * 100).toFixed(2)} tCO₂`,
         });
@@ -97,7 +77,7 @@ export default {
       const newIndex = this.tableData.length + 1;
       this.tableData.push({
         index: newIndex,
-        activity: '',
+        activity: Math.random() > 0.5 ? '外购电力1' : '外购电力2',
         factor: '',
         result: '',
       });
@@ -111,8 +91,8 @@ export default {
       console.log('删除第', index + 1, '行');
     },
     generateResult(row) {
-      // 如果活动数据和排放因子都已选择，则生成随机结果
-      if (row.activity && row.factor) {
+      // 如果排放因子已选择，则生成随机结果
+      if (row.factor) {
         row.result = `${(Math.random() * 100).toFixed(2)} tCO₂`;
       }
     },

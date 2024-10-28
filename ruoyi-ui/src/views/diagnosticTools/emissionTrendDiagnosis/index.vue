@@ -89,6 +89,7 @@ export default {
             type: "line",
             data: data.深圳,
             itemStyle: { color: "#00ced1" },
+            lineStyle: { type: 'dashed' }, // 设置为虚线
             smooth: true,
           },
         ],

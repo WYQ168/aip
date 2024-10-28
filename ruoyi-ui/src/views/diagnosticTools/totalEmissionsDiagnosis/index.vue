@@ -63,23 +63,94 @@ export default {
       const chartDom = this.$refs.barChart;
       const myChart = echarts.init(chartDom);
 
+      // 生成随机数据的函数
+      const generateRandomData = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      };
+
+      const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月'];
+      const yearOnYearData = Array.from({ length: 10 }, () => generateRandomData(50000, 200000));
+      const monthOnMonthData = Array.from({ length: 10 }, () => generateRandomData(50000, 200000));
+
+      // 生成更平滑的环比增长率数据
+      const growthRateData = [];
+      let lastValue = 0; // 上一个值
+      for (let i = 0; i < 10; i++) {
+        const change = generateRandomData(-5, 5); // 控制变化幅度
+        lastValue += change; // 累加得出新的值
+        growthRateData.push(lastValue);
+      }
+
       const option = {
-        tooltip: { trigger: "axis" },
-        legend: { data: ["同比", "当前量", "环比"] },
-        xAxis: {
-          type: "category",
-          data: this.months,
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'cross' },
         },
-        yAxis: { type: "value" },
+        legend: {
+          data: ['同比', '环比', '环比增长率'],
+          top: '5%',
+          left: 'center',
+        },
+        xAxis: {
+          type: 'category',
+          data: months,
+          axisLine: { lineStyle: { color: '#ccc' } },
+        },
+        yAxis: [
+          {
+            type: 'value',
+            name: '销售额 (万元)',
+            position: 'left',
+            axisLine: { lineStyle: { color: '#5470C6' } },
+            splitLine: { lineStyle: { type: 'dashed' } },
+          },
+          {
+            type: 'value',
+            name: '环比增长率 (%)',
+            position: 'right',
+            axisLine: { lineStyle: { color: '#91CC75' } },
+            splitLine: { show: false },
+            axisLabel: {
+              formatter: '{value}%',
+            },
+          },
+        ],
         series: [
-          { name: "同比", type: "bar", data: this.generateRandomData() },
-          { name: "当前量", type: "bar", data: this.generateRandomData() },
-          { name: "环比", type: "bar", data: this.generateRandomData() },
+          {
+            name: '同比',
+            type: 'bar',
+            data: yearOnYearData,
+            itemStyle: { color: '#5470C6' },
+            barWidth: '20%', // 调整柱状图宽度，使其更细
+            barGap: '30%', // 增加柱状图之间的间隔
+          },
+          {
+            name: '环比',
+            type: 'bar',
+            data: monthOnMonthData,
+            itemStyle: { color: '#FFA500' },
+            barWidth: '20%',
+            barGap: '30%',
+          },
+          {
+            name: '环比增长率',
+            type: 'line',
+            yAxisIndex: 1,
+            data: growthRateData,
+            itemStyle: { color: '#91CC75' },
+            label: {
+              show: true,
+              position: 'top',
+              formatter: '{c}%',
+            },
+            smooth: true,
+          },
         ],
       };
 
       myChart.setOption(option);
     },
+
     loadData() {
       const year = this.selectedYear;
       const month = this.selectedMonth;

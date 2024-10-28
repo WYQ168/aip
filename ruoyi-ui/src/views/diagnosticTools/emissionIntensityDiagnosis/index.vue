@@ -6,13 +6,13 @@
         <el-col :span="12">
           <el-card class="metric-card">
             <h2 class="metric-title">当前的执行强度</h2>
-            <p class="metric-value highlight-red">1000?</p>
+            <p class="metric-value highlight-red">120%</p>
           </el-card>
         </el-col>
         <el-col :span="12">
           <el-card class="metric-card">
             <h2 class="metric-title">当前的强度配额</h2>
-            <p class="metric-value highlight-red">800?</p>
+            <p class="metric-value highlight-red">800%</p>
           </el-card>
         </el-col>
       </el-row>
