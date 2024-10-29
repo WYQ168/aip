@@ -23,15 +23,16 @@
     </div>
     <!-- 碳配额不足10%的弹窗 -->
     <el-dialog
-      title="碳配额提醒"
+      title="碳配额通知"
       :visible.sync="quotaDialogVisible"
       width="30%"
       @close="handleDialogClose"
       class="centered-dialog"
     >
-      <p>您的碳配额已不足 10%，请及时购买额外配额。</p>
+      <p>您的碳配额已不足 10%！</p>
       <template #footer>
-        <el-button @click="quotaDialogVisible = false">关闭</el-button>
+        <el-button @click="quotaDialogVisible = false" >稍后通知</el-button>
+        <el-button @click="quotaDialogVisible = false" style="background-color: blue; color: white;">打开管理界面</el-button>
       </template>
     </el-dialog>
   </div>
@@ -217,28 +218,40 @@ export default {
       },
       customers: [
         {
-          name: 'David Brown',
-          id: '#239ILOU1103PP21',
-          date: '12 Jan 2024',
-          pack: 'Premium',
-          amount: 568.0,
-          status: 'Active'
+          name: '粗钢产量-吨',
+          id: '371606.57',
+          date: '321293.57',
+          pack: '435370.9',
+          pack1: '579591.39',
+          pack2: '538523.92',
+          pack3: '527787.37',
+          pack4: '557988.58',
+          amount: '557993.57',
+          status: '557993.57'
         },
         {
-          name: 'Eric Johnson',
-          id: '#309PLOYK1212LM00',
-          date: '19 Jan 2024',
-          pack: 'Basic',
-          amount: 0.0,
-          status: 'Active'
+          name: '碳排放总量-吨',
+          id: '694094',
+          date: '597595',
+          pack: '813096',
+          pack1: '997551',
+          pack2: '1097598',
+          pack3: '10044766',
+          pack4: '984364',
+          amount: '1051166',
+          status: '1111132'
         },
         {
-          name: 'Lisa Miller',
-          id: '#375TY1BM7834QA21',
-          date: '21 Jan 2024',
-          pack: 'Premium',
-          amount: 908.0,
-          status: 'Active'
+          name: '碳排放强度-吨/CO2吨粗钢',
+          id: '1.867819506',
+          date: '1.867819506',
+          pack: '1.867581950',
+          pack1: '1.867819506',
+          pack2: '1.857842050',
+          pack3: '1.867819506',
+          pack4: '1.867436811',
+          amount: '1.867819104',
+          status: '1.869810504'
         },
       ],
     };

@@ -1,7 +1,7 @@
 <template>
   <div class="customer-table-card">
     <div class="header">
-      <h3>New Customers</h3>
+      <h3>月度碳排放强度</h3>
       <button class="filter-button">
         <i class="fas fa-filter"></i> Filter
       </button>
@@ -9,24 +9,31 @@
     <table class="customer-table">
       <thead>
       <tr>
-        <th>Customer Name</th>
-        <th>Transaction ID</th>
-        <th>Date</th>
-        <th>Pack</th>
-        <th>Amount</th>
-        <th>Status</th>
+        <th></th>
+        <th>1月</th>
+        <th>2月</th>
+        <th>3月</th>
+        <th>4月</th>
+        <th>5月</th>
+        <th>6月</th>
+        <th>7月</th>
+        <th>8月</th>
+        <th>9月</th>
       </tr>
       </thead>
       <tbody>
       <tr v-for="customer in customers" :key="customer.id">
         <td class="customer-name">
-          <img :src="customer.avatar" alt="avatar" class="avatar" />
           <span>{{ customer.name }}</span>
         </td>
         <td>{{ customer.id }}</td>
         <td>{{ customer.date }}</td>
         <td>{{ customer.pack }}</td>
-        <td>\${{ customer.amount.toFixed(2) }}</td>
+        <td>{{ customer.pack1 }}</td>
+        <td>{{ customer.pack2 }}</td>
+        <td>{{ customer.pack3 }}</td>
+        <td>{{ customer.pack4 }}</td>
+        <td>{{ customer.amount }}</td>
         <td>
             <span :class="['status', customer.status.toLowerCase()]">
               {{ customer.status }}
