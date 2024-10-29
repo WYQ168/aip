@@ -23,7 +23,7 @@
     <div class="table-container">
       <el-table :data="filteredFactors" border style="width: 100%;">
         <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column prop="settingItem" label="设置项" />
+        <el-table-column prop="settingItem" label="项目(数据类型)" />
         <el-table-column prop="settingContent" label="设置内容" />
         <el-table-column label="操作">
           <template #default="scope">
@@ -37,11 +37,55 @@
     <!-- 新增/编辑对话框 -->
     <el-dialog :title="isEdit ? '编辑设置项' : '新增设置项'" :visible.sync="dialogVisible">
       <el-form :model="currentFactor" label-width="120px">
-        <el-form-item label="设置项" required>
-          <el-input v-model="currentFactor.settingItem" />
+        <el-form-item label="有效数字" prop="selectField">
+          <el-select v-model="currentFactor.selectField" placeholder="请选择" >
+            <el-option
+              v-for="item in options1"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="设置内容" required>
-          <el-input v-model="currentFactor.settingContent" />
+        <el-form-item label="数据来源" prop="selectField">
+          <el-select v-model="currentFactor.selectField" placeholder="请选择" >
+            <el-option
+              v-for="item in options2"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="数据阈值" prop="selectField">
+          <el-select v-model="currentFactor.selectField" placeholder="请选择" >
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="数据单位" prop="selectField">
+          <el-select v-model="currentFactor.selectField" placeholder="请选择" >
+            <el-option
+              v-for="item in options4"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="录入频率" prop="selectField">
+          <el-select v-model="currentFactor.selectField" placeholder="请选择" >
+            <el-option
+              v-for="item in options5"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -65,7 +109,37 @@ export default {
       currentFactor: {
         settingItem: '',
         settingContent: '',
+        selectField: '',
       },
+
+      options: [ // 下拉框的选项列表
+        { value: 'option1', label: '选项一' },
+        { value: 'option2', label: '选项二' },
+        { value: 'option3', label: '选项三' }
+      ],
+
+      options1: [ // 下拉框的选项列表
+        { value: 'option1', label: '1' },
+        { value: 'option2', label: '2' },
+        { value: 'option3', label: '3' }
+      ],
+      options2: [ // 下拉框的选项列表
+        { value: 'option1', label: '手动输入' },
+        { value: 'option2', label: '自动采集' },
+      ],
+      options4: [ // 下拉框的选项列表
+        { value: 'option1', label: '吨(t)' },
+        { value: 'option2', label: '万立方米' },
+        { value: 'option2', label: '千克(kg)' },
+        { value: 'option2', label: '兆瓦时(kg)' },
+        { value: 'option2', label: '吉焦(GJ)' },
+      ],
+      options5: [ // 下拉框的选项列表
+        { value: 'option1', label: '日' },
+        { value: 'option2', label: '月' },
+        { value: 'option2', label: '季' },
+        { value: 'option2', label: '年' },
+      ],
     };
   },
   computed: {
@@ -83,16 +157,12 @@ export default {
   methods: {
     generateRandomData() {
       const settingItems = [
-        '数据来源', '数据代表性', '数据格式', '数据单位',
-        '有效数字', '数据频率', '数据校准'
+        '兰炭', '市政电'
       ];
       const settingContents = [
-        '自动采集/手动输入', '代表工序/车间/全厂',
-        '吨（t）/立方米（m³）/兆瓦时（MWh）/吉焦（GJ）',
-        '保留小数点后几位', '数据输入频率（秒、日、月）',
-        '数据格式的有效阈值'
+        '已编辑', '缺省'
       ];
-      const randomFactors = Array.from({ length: 10 }, () => ({
+      const randomFactors = Array.from({ length: 5 }, () => ({
         settingItem: settingItems[Math.floor(Math.random() * settingItems.length)],
         settingContent: settingContents[Math.floor(Math.random() * settingContents.length)],
       }));

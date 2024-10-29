@@ -15,15 +15,12 @@
 
     <!-- 表格 -->
     <el-table :data="filteredData" border style="width: 100%; margin-top: 20px;">
-      <el-table-column prop="activityData" label="活动数据" />
+      <el-table-column prop="activityData" label="活动数据名称" />
       <el-table-column prop="dataType" label="数据类型" />
       <el-table-column prop="relatedProcess" label="关联工序" />
       <el-table-column prop="source" label="数据来源" />
-      <el-table-column prop="representation" label="数据代表性" />
-      <el-table-column prop="format" label="数据格式" />
-      <el-table-column prop="unit" label="数据单位" />
-      <el-table-column prop="precision" label="有效数字" />
-      <el-table-column prop="frequency" label="数据频率" />
+      <el-table-column prop="unit" label="单位" />
+      <el-table-column prop="frequency" label="数据录入频率" />
 
       <el-table-column label="操作">
         <template #default="scope">
@@ -36,14 +33,26 @@
     <!-- 编辑对话框 -->
     <el-dialog :visible.sync="dialogVisible" title="编辑行数据" width="30%">
       <el-form :model="editForm" label-width="120px">
-        <el-form-item label="活动数据">
-          <el-input v-model="editForm.activityData" placeholder="活动数据" />
+        <el-form-item label="活动数据名称">
+          <el-input v-model="editForm.activityData" placeholder="活动数据名称" />
         </el-form-item>
         <el-form-item label="数据类型">
           <el-input v-model="editForm.dataType" placeholder="数据类型" />
         </el-form-item>
+        <el-form-item label="数据来源">
+          <el-input v-model="editForm.dataSource" placeholder="数据来源" />
+        </el-form-item>
+        <el-form-item label="数量">
+          <el-input v-model="editForm.amount" placeholder="数量" />
+        </el-form-item>
+        <el-form-item label="单位">
+          <el-input v-model="editForm.unit" placeholder="单位" />
+        </el-form-item>
         <el-form-item label="关联工序">
           <el-input v-model="editForm.relatedProcess" placeholder="关联工序" />
+        </el-form-item>
+        <el-form-item label="数据录入频率">
+          <el-input v-model="editForm.dataEntryFrequency" placeholder="数据录入频率" />
         </el-form-item>
       </el-form>
 
@@ -64,6 +73,10 @@ export default {
         activityData: '',
         dataType: '',
         relatedProcess: '',
+        dataSource: '',
+        amount: '',
+        unit: '',
+        dataEntryFrequency: '',
       },
       currentRow: null,
       activeCategory: 'fossilFuel',
@@ -85,9 +98,11 @@ export default {
         internalHeat: [],
         carbonProduct: [],
       },
-      activityDataOptions: ['煤炭', '矿石'],
-      dataTypeOptions: ['化石燃料', '矿物质'],
+      activityDataOptions: ['兰炭', '市政电'],
+      dataSourceOptions: ['手动输入','自动读取'],
+      dataTypeOptions: ['化石燃料燃烧', '购入使用电力', '外供电力','购入使用电力','外供热力'],
       relatedProcessOptions: ['焦化', '烧结', '球团'],
+      dataEntryFrequencyOptions: ['季', '月'],
     };
   },
   mounted() {
@@ -115,11 +130,10 @@ export default {
         activityData: this.getRandomValue(this.activityDataOptions),
         dataType: this.getRandomValue(this.dataTypeOptions),
         relatedProcess: this.getRandomValue(this.relatedProcessOptions),
+        dataSource: this.getRandomValue(this.dataSourceOptions),
+        dataEntryFrequency: this.getRandomValue(this.dataEntryFrequencyOptions),
         source: '自动采集',
-        representation: '工序',
-        format: 'CSV',
         unit: '吨',
-        precision: Math.floor(Math.random() * 4) + 1,
         frequency: '月',
       };
       this.tableData[category].push(newRow);
