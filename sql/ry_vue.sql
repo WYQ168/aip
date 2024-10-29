@@ -1,17 +1,17 @@
 /*
  Navicat Premium Dump SQL
 
- Source Server         : 本机Ubuntu
+ Source Server         : 159.75.211.241_3306
  Source Server Type    : MySQL
- Source Server Version : 80039 (8.0.39-0ubuntu0.22.04.1)
- Source Host           : localhost:3306
+ Source Server Version : 80027 (8.0.27)
+ Source Host           : 159.75.211.241:3306
  Source Schema         : ry_vue
 
  Target Server Type    : MySQL
- Target Server Version : 80039 (8.0.39-0ubuntu0.22.04.1)
+ Target Server Version : 80027 (8.0.27)
  File Encoding         : 65001
 
- Date: 28/10/2024 21:38:56
+ Date: 29/10/2024 20:31:06
 */
 
 SET NAMES utf8mb4;
@@ -537,7 +537,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 136 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 170 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -578,6 +578,40 @@ INSERT INTO `sys_logininfor` VALUES (132, 'admin', '127.0.0.1', '内网IP', 'Chr
 INSERT INTO `sys_logininfor` VALUES (133, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-28 20:04:32');
 INSERT INTO `sys_logininfor` VALUES (134, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-10-28 20:29:08');
 INSERT INTO `sys_logininfor` VALUES (135, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-28 20:29:11');
+INSERT INTO `sys_logininfor` VALUES (136, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-28 22:35:02');
+INSERT INTO `sys_logininfor` VALUES (137, 'admin', '27.27.155.139', 'XX XX', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-10-29 08:17:58');
+INSERT INTO `sys_logininfor` VALUES (138, 'admin', '27.27.155.139', 'XX XX', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-10-29 08:18:02');
+INSERT INTO `sys_logininfor` VALUES (139, 'admin', '27.27.155.139', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 08:18:03');
+INSERT INTO `sys_logininfor` VALUES (140, 'admin', '27.27.155.139', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 08:20:19');
+INSERT INTO `sys_logininfor` VALUES (141, 'admin', '27.27.155.139', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 08:21:07');
+INSERT INTO `sys_logininfor` VALUES (142, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 08:31:53');
+INSERT INTO `sys_logininfor` VALUES (143, 'admin', '113.102.165.19', 'XX XX', 'Safari', 'Mac OS X', '0', '登录成功', '2024-10-29 09:20:02');
+INSERT INTO `sys_logininfor` VALUES (144, 'admin', '27.46.98.4', 'XX XX', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-10-29 09:44:30');
+INSERT INTO `sys_logininfor` VALUES (145, 'admin', '27.46.98.4', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 09:44:35');
+INSERT INTO `sys_logininfor` VALUES (146, 'admin', '113.84.80.22', 'XX XX', 'Chrome Mobile', 'Android 1.x', '0', '登录成功', '2024-10-29 09:45:28');
+INSERT INTO `sys_logininfor` VALUES (147, 'admin', '218.90.141.146', 'XX XX', 'Firefox 13', 'Windows 10', '0', '登录成功', '2024-10-29 09:46:09');
+INSERT INTO `sys_logininfor` VALUES (148, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 09:51:49');
+INSERT INTO `sys_logininfor` VALUES (149, 'admin', '27.46.98.4', 'XX XX', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-10-29 10:16:31');
+INSERT INTO `sys_logininfor` VALUES (150, 'admin', '27.46.98.4', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 10:16:36');
+INSERT INTO `sys_logininfor` VALUES (151, 'admin', '27.46.98.4', 'XX XX', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-10-29 10:19:03');
+INSERT INTO `sys_logininfor` VALUES (152, 'admin', '27.46.98.4', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 10:19:40');
+INSERT INTO `sys_logininfor` VALUES (153, 'admin', '113.84.80.22', 'XX XX', 'Chrome Mobile', 'Android 1.x', '1', '验证码错误', '2024-10-29 10:29:29');
+INSERT INTO `sys_logininfor` VALUES (154, 'admin', '113.84.80.22', 'XX XX', 'Chrome Mobile', 'Android 1.x', '1', '验证码错误', '2024-10-29 10:29:32');
+INSERT INTO `sys_logininfor` VALUES (155, 'admin', '113.84.80.22', 'XX XX', 'Chrome Mobile', 'Android 1.x', '1', '验证码错误', '2024-10-29 10:29:35');
+INSERT INTO `sys_logininfor` VALUES (156, 'admin', '113.84.80.22', 'XX XX', 'Chrome Mobile', 'Android 1.x', '1', '验证码错误', '2024-10-29 10:29:43');
+INSERT INTO `sys_logininfor` VALUES (157, 'admin', '113.84.80.22', 'XX XX', 'Chrome Mobile', 'Android 1.x', '0', '登录成功', '2024-10-29 10:30:11');
+INSERT INTO `sys_logininfor` VALUES (158, 'admin', '27.46.105.6', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 11:10:20');
+INSERT INTO `sys_logininfor` VALUES (159, 'admin', '120.237.87.212', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 11:26:00');
+INSERT INTO `sys_logininfor` VALUES (160, 'admin', '27.46.98.4', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 11:29:05');
+INSERT INTO `sys_logininfor` VALUES (161, 'admin', '113.84.80.22', 'XX XX', 'Chrome Mobile', 'Android 1.x', '0', '登录成功', '2024-10-29 11:29:39');
+INSERT INTO `sys_logininfor` VALUES (162, 'admin', '111.74.1.37', 'XX XX', 'Chrome 12', 'Windows 10', '0', '登录成功', '2024-10-29 11:32:04');
+INSERT INTO `sys_logininfor` VALUES (163, 'admin', '27.27.155.139', 'XX XX', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-10-29 19:40:49');
+INSERT INTO `sys_logininfor` VALUES (164, 'admin', '27.27.155.139', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 19:40:55');
+INSERT INTO `sys_logininfor` VALUES (165, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 19:43:52');
+INSERT INTO `sys_logininfor` VALUES (166, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-10-29 19:59:18');
+INSERT INTO `sys_logininfor` VALUES (167, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 20:07:34');
+INSERT INTO `sys_logininfor` VALUES (168, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-10-29 20:07:40');
+INSERT INTO `sys_logininfor` VALUES (169, 'admin', '103.116.122.32', 'XX XX', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-10-29 20:11:45');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -605,7 +639,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2024 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2030 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -699,7 +733,7 @@ INSERT INTO `sys_menu` VALUES (2001, '碳排放数据管理', 0, 1, 'carbonEmiss
 INSERT INTO `sys_menu` VALUES (2002, '碳资产价值监控', 0, 2, 'carbonAssetValueMonitoring', NULL, NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 09:37:09', 'admin', '2024-10-27 16:50:38', '');
 INSERT INTO `sys_menu` VALUES (2003, '诊断工具', 0, 3, 'diagnosticTools', NULL, NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 09:37:21', 'admin', '2024-10-27 16:50:07', '');
 INSERT INTO `sys_menu` VALUES (2006, '碳足迹管理LCA', 0, 6, '6', NULL, NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 09:37:52', 'admin', '2024-10-27 09:39:57', '');
-INSERT INTO `sys_menu` VALUES (2007, '智慧管家', 0, 7, '7', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, '#', 'admin', '2024-10-27 09:38:13', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2007, '智慧管家', 0, 7, 'steward', 'steward/index', NULL, '', 1, 0, 'C', '0', '0', '', 'people', 'admin', '2024-10-27 09:38:13', 'admin', '2024-10-27 15:58:01', '');
 INSERT INTO `sys_menu` VALUES (2008, '报表生成', 0, 8, '8', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, '#', 'admin', '2024-10-27 09:38:21', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2009, '活动数据（AD）管理', 2001, 0, 'activeDataManagement', '', NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 11:11:25', 'admin', '2024-10-27 13:04:31', '');
 INSERT INTO `sys_menu` VALUES (2010, '排放因子（EF）管理', 2001, 1, 'emissionFactorManagement', '', NULL, '', 1, 0, 'M', '0', '0', '', '#', 'admin', '2024-10-27 11:12:09', 'admin', '2024-10-27 13:04:40', '');
@@ -716,6 +750,12 @@ INSERT INTO `sys_menu` VALUES (2020, '排放总量诊断', 2003, 0, 'totalEmissi
 INSERT INTO `sys_menu` VALUES (2021, '排放强度诊断', 2003, 1, 'emissionIntensityDiagnosis', 'diagnosticTools/emissionIntensityDiagnosis/index', NULL, '', 1, 0, 'C', '0', '0', '', '#', 'admin', '2024-10-27 16:42:16', 'admin', '2024-10-27 16:47:50', '');
 INSERT INTO `sys_menu` VALUES (2022, '排放趋势诊断', 2003, 2, 'emissionTrendDiagnosis', 'diagnosticTools/emissionTrendDiagnosis/index', NULL, '', 1, 0, 'C', '0', '0', '', '#', 'admin', '2024-10-27 16:43:37', 'admin', '2024-10-27 16:48:22', '');
 INSERT INTO `sys_menu` VALUES (2023, '履约风险诊断', 2003, 3, 'performanceRiskDiagnosis', 'diagnosticTools/performanceRiskDiagnosis/index', NULL, '', 1, 0, 'C', '0', '0', '', '#', 'admin', '2024-10-27 16:44:29', 'admin', '2024-10-27 16:48:44', '');
+INSERT INTO `sys_menu` VALUES (2024, '碳足迹数据库管理', 2006, 2, 'databaseIndex', 'carbonFootprint/databaseIndex/index', NULL, '', 1, 0, 'C', '0', '0', NULL, 'clipboard', 'admin', '2024-10-27 17:11:08', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2025, '全生命周期清单管理', 2006, 3, 'inventory', 'carbonFootprint/inventory/index', NULL, '', 1, 0, 'C', '0', '0', NULL, 'date-range', 'admin', '2024-10-27 17:12:06', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2026, '碳排放月报', 2008, 1, 'tableCheckByMonth', 'tableCheck/carbonTableCheckByMonth/index', NULL, '', 1, 0, 'C', '0', '0', '', 'chart', 'admin', '2024-10-27 15:07:02', 'admin', '2024-10-27 15:07:29', '');
+INSERT INTO `sys_menu` VALUES (2027, '碳排放年报', 2008, 2, 'tableCheckByYear', 'tableCheck/carbonTableCheckByYear/index', NULL, '', 1, 0, 'C', '0', '0', NULL, 'monitor', 'admin', '2024-10-27 15:18:59', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2028, '披露文件生成', 2008, 3, 'announce', 'tableCheck/announceFile/index', NULL, '', 1, 0, 'C', '0', '0', NULL, 'education', 'admin', '2024-10-27 15:48:06', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2029, '产品全生命周期模型管理', 2006, 1, 'model', 'carbonFootprint/modelIndex/index', NULL, '', 1, 0, 'C', '0', '0', NULL, 'example', 'admin', '2024-10-27 17:10:10', '', NULL, '');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -767,7 +807,7 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 195 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 196 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -867,6 +907,7 @@ INSERT INTO `sys_oper_log` VALUES (191, '菜单管理', 2, 'com.ruoyi.web.contro
 INSERT INTO `sys_oper_log` VALUES (192, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2024-10-27 09:37:21\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2003,\"menuName\":\"诊断工具\",\"menuType\":\"M\",\"orderNum\":3,\"params\":{},\"parentId\":0,\"path\":\"diagnosticTools\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:50:07', 13);
 INSERT INTO `sys_oper_log` VALUES (193, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2024-10-27 09:37:09\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2002,\"menuName\":\"碳资产价值监控\",\"menuType\":\"M\",\"orderNum\":2,\"params\":{},\"parentId\":0,\"path\":\"carbonAssetValueMonitoring\",\"perms\":\"\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-27 16:50:38', 7);
 INSERT INTO `sys_oper_log` VALUES (194, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', '研发部门', '/system/menu/2000', '127.0.0.1', '内网IP', '2000', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-28 20:29:01', 32);
+INSERT INTO `sys_oper_log` VALUES (195, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', '研发部门', '/system/menu/2000', '127.0.0.1', '内网IP', '2000', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-10-29 19:44:41', 179);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1068,7 +1109,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-10-28 20:29:12', 'admin', '2024-10-27 09:24:22', '', '2024-10-28 20:29:11', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '103.116.122.32', '2024-10-29 20:11:45', 'admin', '2024-10-27 09:24:22', '', '2024-10-29 20:11:45', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-10-27 09:24:22', 'admin', '2024-10-27 09:24:22', '', NULL, '测试员');
 
 -- ----------------------------

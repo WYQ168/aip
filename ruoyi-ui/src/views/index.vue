@@ -90,7 +90,7 @@ export default {
       monthlySalesOptions: {
         tooltip: { trigger: 'axis' },
         legend: {
-          data: ['Current Year', 'Past Year'],
+          data: ['今年', '去年'],
           bottom: 0,
           icon: 'circle',
         },
@@ -100,21 +100,21 @@ export default {
         },
         yAxis: {
           type: 'category',
-          data: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          data: ['烧结', '球团', '石灰', '高炉炼铁', '转炉炼钢', '精炼', '连铸'],
         },
         series: [
           {
-            name: 'Current Year',
+            name: '今年',
             type: 'bar',
             stack: 'Total',
-            data: [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
+            data: [1000, 2000, 3000, 4000,300, 5000, 3590 ],
             itemStyle: { color: '#7353BA' },
           },
           {
-            name: 'Past Year',
+            name: '去年',
             type: 'bar',
             stack: 'Total',
-            data: [500, 1500, 2500, 3500, 4500, 5500, 6500, 7500, 8500, 9500],
+            data: [500, 1500, 2100, 3500, 400, 6480, 4012],
             itemStyle: { color: '#E0E0E0' },
           },
         ],
@@ -123,7 +123,14 @@ export default {
       userActionByCityOptions: {
         tooltip: { trigger: 'axis' },
         legend: {
-          data: ['Beijing', 'Shanghai', 'Shenzhen'],
+          data: [
+            '化石燃料燃烧',
+            '工业过程排放',
+            '净购入电力排放',
+            '固碳产品隐含排放',
+            '净购热力排放',
+            '二氧化碳排旋量'
+          ],
           top: 0,
         },
         xAxis: {
@@ -137,28 +144,50 @@ export default {
         },
         series: [
           {
-            name: 'Beijing',
+            name: '化石燃料燃烧',
             type: 'line',
-            data: [4000, 5000, 6000, 5500, 4500, 4000, 5000],
+            data: [5000, 6000, 7000, 6500, 6000, 5500, 6000],
             itemStyle: { color: '#7353BA' },
             smooth: true,
           },
           {
-            name: 'Shanghai',
+            name: '工业过程排放',
             type: 'line',
-            data: [3000, 3500, 4000, 3000, 2500, 3000, 4000],
+            data: [4000, 4500, 5000, 4000, 3500, 4000, 5000],
             itemStyle: { color: '#F47C7C' },
             smooth: true,
           },
           {
-            name: 'Shenzhen',
+            name: '净购入电力排放',
             type: 'line',
-            data: [2000, 2500, 3000, 2000, 1500, 2000, 3000],
+            data: [-2000, -2500, -3000, -2000, -1500, -2000, -2500],
             itemStyle: { color: '#5BC0BE' },
+            smooth: true,
+          },
+          {
+            name: '净购热力排放',
+            type: 'line',
+            data: [1000, 1500, 2000, 1500, 1000, 1200, 1100],
+            itemStyle: { color: '#FFA07A' },
+            smooth: true,
+          },
+          {
+            name: '固碳产品隐含排放',
+            type: 'line',
+            data: [3000, 3500, 4000, 3500, 3000, 2800, 2900],
+            itemStyle: { color: '#20B2AA' },
+            smooth: true,
+          },
+          {
+            name: '二氧化碳排旋量',
+            type: 'line',
+            data: [6000, 6500, 7000, 6500, 6000, 5800, 5900],
+            itemStyle: { color: '#FF4500' },
             smooth: true,
           },
         ],
       },
+
       ticketStatisticsOptions: {
         tooltip: { trigger: 'item' },
         legend: {
@@ -177,10 +206,11 @@ export default {
               fontSize: 24,
             },
             data: [
-              { value: 546, name: 'Good Tickets', itemStyle: { color: '#7353BA' } },
-              { value: 457, name: 'Bad Tickets', itemStyle: { color: '#F47C7C' } },
-              { value: 386, name: 'Open Tickets', itemStyle: { color: '#5BC0BE' } },
-              { value: 64, name: 'Solved Tickets', itemStyle: { color: '#E0E0E0' } },
+              { value: 926.48, name: '化石燃料燃烧排放', itemStyle: { color: '#5BC0BE' } },
+              { value: 7.72, name: '净购热力排放', itemStyle: { color: '#7353BA' } },
+              { value: 65.55, name: '净购入电力排放', itemStyle: { color: '#F47C7C' } },
+              { value: 7.54, name: '固碳产品隐含排放', itemStyle: { color: '#E0E0E0' } },
+              { value: 69.74, name: '工业过程排放', itemStyle: { color: '#a11c1c' } },
             ],
           },
         ],
