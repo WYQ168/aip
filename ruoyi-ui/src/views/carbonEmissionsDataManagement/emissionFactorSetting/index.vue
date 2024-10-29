@@ -23,8 +23,9 @@
     <div class="table-container">
       <el-table :data="filteredFactors" border style="width: 100%;">
         <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column prop="settingItem" label="设置项" />
-        <el-table-column prop="settingContent" label="设置内容" />
+        <el-table-column prop="settingItem" label="排放因子名称" />
+        <el-table-column prop="settingContent" label="数值" />
+        <el-table-column prop="unit" label="单位" />
         <el-table-column label="操作">
           <template #default="scope">
             <el-button type="text" @click="editFactor(scope.$index, scope.row)">编辑</el-button>
@@ -84,16 +85,18 @@ export default {
   },
   methods: {
     generateRandomData() {
-      const settingItems = ['数据来源', '查看排放因子', '有效数字', '数据校准'];
+      const settingItems = ['汽油', '天然气', '煤气', '柴油'];
+      const units = ['tCO2/t', 'tCO2/10^4Nm3', 'tCO2/t'];
       const settingContents = [
-        '实测值/缺省值',
-        '缺省值见《填报指南·附录A》',
-        '保留小数点后几位',
-        '数据格式或数值的有效阈值；单位不匹配时，提醒用户',
+        '2.925',
+        '2.162',
+        '1.900',
+        '1.850',
       ];
 
       return Array.from({ length: 10 }, () => ({
         settingItem: settingItems[Math.floor(Math.random() * settingItems.length)],
+        unit: units[Math.floor(Math.random() * units.length)],
         settingContent: settingContents[Math.floor(Math.random() * settingContents.length)],
       }));
     },

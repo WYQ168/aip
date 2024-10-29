@@ -113,9 +113,9 @@ export default {
       },
 
       options: [ // 下拉框的选项列表
-        { value: 'option1', label: '选项一' },
-        { value: 'option2', label: '选项二' },
-        { value: 'option3', label: '选项三' }
+        { value: 'option1', label: '50' },
+        { value: 'option2', label: '100' },
+        { value: 'option3', label: '200' }
       ],
 
       options1: [ // 下拉框的选项列表
@@ -129,9 +129,9 @@ export default {
       ],
       options4: [ // 下拉框的选项列表
         { value: 'option1', label: '吨(t)' },
-        { value: 'option2', label: '万立方米' },
+        { value: 'option2', label: '万立方米(10^4 Nm3)' },
         { value: 'option2', label: '千克(kg)' },
-        { value: 'option2', label: '兆瓦时(kg)' },
+        { value: 'option2', label: '兆瓦时(MWh)' },
         { value: 'option2', label: '吉焦(GJ)' },
       ],
       options5: [ // 下拉框的选项列表

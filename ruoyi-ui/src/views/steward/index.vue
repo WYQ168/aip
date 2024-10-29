@@ -130,6 +130,7 @@
     flex-direction: column;
     gap: 5px;
     background-color: #f0f0f0;
+    min-height: 400px;
   }
 
   .message {

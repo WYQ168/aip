@@ -64,7 +64,7 @@ export default {
   methods: {
     initializeTableData() {
       // 初始化 20 条示例数据，随机分配 "外购电力1" 或 "外购电力2"
-      for (let i = 1; i <= 20; i++) {
+      for (let i = 1; i <= 15; i++) {
         this.tableData.push({
           index: i,
           activity: Math.random() > 0.5 ? '外购电力1' : '外购电力2',

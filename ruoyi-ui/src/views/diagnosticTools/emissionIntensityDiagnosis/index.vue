@@ -18,7 +18,7 @@
         </div>
         <div class="alert-section">
           <el-icon><i class="el-icon-warning"></i></el-icon>
-          <span class="alert-text">超标 20%</span>
+          <span class="alert-text">超标20%</span>
         </div>
       </div>
     </el-card>
@@ -106,7 +106,7 @@ export default {
 }
 
 .alert-text {
-  font-weight: bold;
+
 }
 .table-card {
   margin-top: 20px;

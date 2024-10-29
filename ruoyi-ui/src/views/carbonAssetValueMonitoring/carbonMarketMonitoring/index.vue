@@ -1,6 +1,6 @@
 <template>
   <div class="kline-chart-container">
-    <h2 class="dashboard-title">碳市场行情 - 上证指数</h2>
+    <h2 class="dashboard-title">碳市场行情 - 国家统一碳排放权交易市场</h2>
 
     <!-- 行情数据展示区域 -->
     <el-row :gutter="20" class="market-info">
