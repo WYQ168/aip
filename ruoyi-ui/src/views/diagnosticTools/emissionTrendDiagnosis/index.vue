@@ -9,8 +9,8 @@
             <el-option v-for="year in years" :key="year" :label="year" :value="year" />
           </el-select>
           <el-select v-model="selectedMarket" placeholder="选择市场">
-            <el-option label="全国碳市场" value="national" />
-            <el-option label="深圳市场" value="shenzhen" />
+            <el-option label="国家碳排放权交易市场" value="national" />
+            <el-option label="自愿碳市场（CCER）" value="shenzhen" />
           </el-select>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default {
 
       const option = {
         tooltip: { trigger: "axis" },
-        legend: { data: ["排放量", "配额量", "Shenzhen"] },
+        legend: { data: ["排放量", "配额量", "预测值"] },
         xAxis: {
           type: "category",
           data: ["1月", "3月", "5月", "7月", "9月", "11月"],
@@ -85,7 +85,7 @@ export default {
             smooth: true,
           },
           {
-            name: "Shenzhen",
+            name: "预测值",
             type: "line",
             data: data.深圳,
             itemStyle: { color: "#00ced1" },
