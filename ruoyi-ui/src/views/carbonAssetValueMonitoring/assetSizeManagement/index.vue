@@ -17,7 +17,7 @@
     <el-table :data="tableData" border style="width: 100%; margin-top: 20px;">
       <el-table-column prop="type" label="碳资产类型" />
       <el-table-column prop="quantity" label="数据" />
-      <el-table-column prop="remark" label="项目信息" />
+      <el-table-column prop="remark" label="项目编号" />
       <el-table-column label="操作" width="150">
         <template #default="scope">
           <el-button type="text" icon="el-icon-edit" @click="openDialog('edit', scope.$index)"></el-button>

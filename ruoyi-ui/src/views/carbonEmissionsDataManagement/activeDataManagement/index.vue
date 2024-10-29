@@ -19,6 +19,7 @@
       <el-table-column prop="dataType" label="数据类型" />
       <el-table-column prop="relatedProcess" label="关联工序" />
       <el-table-column prop="source" label="数据来源" />
+      <el-table-column prop="realData" label="数值" />
       <el-table-column prop="unit" label="单位" />
       <el-table-column prop="frequency" label="数据录入频率" />
 
@@ -74,6 +75,7 @@ export default {
         dataType: '',
         relatedProcess: '',
         dataSource: '',
+        realData: '',
         amount: '',
         unit: '',
         dataEntryFrequency: '',
@@ -98,11 +100,12 @@ export default {
         internalHeat: [],
         carbonProduct: [],
       },
-      activityDataOptions: ['兰炭', '市政电'],
+      activityDataOptions: ['兰炭', '市政电','石灰石','天然气'],
       dataSourceOptions: ['手动输入','自动读取'],
       dataTypeOptions: ['化石燃料燃烧', '购入使用电力', '外供电力','购入使用电力','外供热力'],
       relatedProcessOptions: ['焦化', '烧结', '球团'],
       dataEntryFrequencyOptions: ['季', '月'],
+      realDataOptions: ['296632.8', '1405576.663', '1083082.87', '80.12'],
     };
   },
   mounted() {
@@ -131,6 +134,7 @@ export default {
         dataType: this.getRandomValue(this.dataTypeOptions),
         relatedProcess: this.getRandomValue(this.relatedProcessOptions),
         dataSource: this.getRandomValue(this.dataSourceOptions),
+        realData: this.getRandomValue(this.realDataOptions),
         dataEntryFrequency: this.getRandomValue(this.dataEntryFrequencyOptions),
         source: '自动采集',
         unit: '吨',
