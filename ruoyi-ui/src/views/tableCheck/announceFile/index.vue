@@ -13,7 +13,8 @@
         </el-select>
       </el-col>
       <el-col :span="10">
-        <el-button type="primary" @click="generateDisclosureFile">生成文件</el-button>
+        <el-button type="primary" @click="generateDisclosureFile">生成报告</el-button>
+        <el-button type="primary" >下载报告</el-button>
       </el-col>
     </el-row>
 
@@ -25,6 +26,20 @@
     </el-card>
 
     <el-btn type="success" v-if="showContent" @click="downloadPDF" style="margin-top: 20px;">下载 PDF</el-btn>
+    <h3 style="display: inline-block; margin-right: 20px;">排放总计量表-可修正</h3>
+    <el-button type="primary" style="background-color: #1E90FF; margin-left: 10px;">保存</el-button>
+    <el-button type="primary" style="background-color: #1E90FF; border: 10px ">清空</el-button>
+
+    <el-table :data="tableData" style="width: 100%; margin-top: 20px;" :span-method="mergeCells">
+      <el-table-column prop="category" label="" ></el-table-column>
+      <el-table-column prop="value" label="数据值" ></el-table-column>
+      <el-table-column prop="unit" label="单位" ></el-table-column>
+      <el-table-column prop="adjustedValue" label="修正值">
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.adjustedValue" size="small"/>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -37,6 +52,21 @@
         selectedType: '',
         showContent: false,
         disclosureContent: '',
+        tableData: [
+          { category: '排放量', value: '化石燃料燃烧排放', unit: 'tCO2eq', adjustedValue: '', amount: '9626162.28' },
+          { category: '', value: '净外购使用电力排放', unit: 'tCO2eq', adjustedValue: '', amount: '655526.74' },
+          { category: '', value: '净外购使用热力排放', unit: 'tCO2eq', adjustedValue: '', amount: '-77214.14' },
+          { category: '', value: '固碳产品隐含排放', unit: 'tCO2eq', adjustedValue: '', amount: '75474.92' },
+          { category: '', value: '生产过程排放', unit: 'tCO2eq', adjustedValue: '', amount: '637434.07' },
+          { category: '核算边界内碳排放总量', value: '10917383.87',  style: { color: 'red' }, unit: 'tCO2eq', adjustedValue: '', isHighlighted: true },
+          { category: '产品产量', value: '5292508.59', unit: 't', adjustedValue: '' },
+          { category: '排放强度', value: '2.06',  style: { color: 'red' }, unit: 'tCO2/t', adjustedValue: '', isHighlighted: true },
+          { category: '能源消耗量', value: '烟煤', unit: 'tce', adjustedValue: '', amount: '907000' },
+          { category: '', value: '兰炭', unit: 'tce', adjustedValue: '', amount: '22440.52' },
+          { category: '', value: '焦炭', unit: 'tce', adjustedValue: '', amount: '2206000' },
+          { category: '', value: '天然气', unit: 'tce', adjustedValue: '', amount: '10657' },
+          { category: '能源消耗总量', value: '......', unit: '', adjustedValue: '' }
+        ]
       };
     },
     methods: {
@@ -66,6 +96,7 @@
 
         doc.save(`披露文件_${this.selectedType}.pdf`);
       },
+
     },
   };
 </script>
