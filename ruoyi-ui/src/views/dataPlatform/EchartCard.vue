@@ -4,8 +4,8 @@
       <h3>{{ title }}</h3>
       <div class="dropdowns">
         <select>
-          <option>Weekly</option>
           <option>Monthly</option>
+          <option>Weekly</option>
         </select>
       </div>
     </div>

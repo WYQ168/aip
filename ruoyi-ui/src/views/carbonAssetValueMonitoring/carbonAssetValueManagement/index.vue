@@ -20,7 +20,7 @@
     <br/>
 
     <div>
-      <h3>持有资产表</h3>
+      <h3>收益表</h3>
       <el-table :data="tableData" style="width: 100%">
         <el-table-column prop="serialNumber" label="序号" ></el-table-column>
         <el-table-column prop="assetName" label="碳资产名称" ></el-table-column>
@@ -30,7 +30,7 @@
         <el-table-column prop="unit" label="单位" ></el-table-column>
         <el-table-column prop="description" label="说明" ></el-table-column>
         <el-table-column prop="price" label="单价" ></el-table-column>
-        <el-table-column prop="assetScale" label="持有资产规模（万元）" ></el-table-column>
+        <el-table-column prop="assetScale" label="收益（万元）" ></el-table-column>
       </el-table>
 
       <p style="text-align: right;">单价取相关产品在对应市场近3个月成交价平均值，随市场变动。</p>
@@ -123,7 +123,7 @@ export default {
           unit: 'tCO2',
           description: '企业购入',
           price: '25.32元/吨',
-          assetScale: 50.64
+          assetScale: '.....'
         },
         {
           serialNumber: 4,
@@ -134,17 +134,17 @@ export default {
           unit: '张',
           description: '企业购入',
           price: '10元/张',
-          assetScale: 0.2
+          assetScale: '.....'
         }
       ],
       tableData2: [
         {
-          actualEmissions: 200000,
-          allocation: 180000,
-          shortfall: 20000,
-          purchaseAmountCCER: 9000,
-          unitPriceCCER: 63,
-          costCCER: 567000,
+          actualEmissions: '.......',
+          allocation: '.......',
+          shortfall: '.......',
+          purchaseAmountCCER: '.......',
+          unitPriceCCER: '.......',
+          costCCER: '.......',
           purchaseAmountCEA: '',
           unitPriceCEA: '',
           costCEA: ''

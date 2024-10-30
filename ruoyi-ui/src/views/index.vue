@@ -202,10 +202,11 @@ export default {
             radius: ['50%', '70%'],
             label: {
               show: true,
-              position: 'center',
-              formatter: '{b}\n{c}',
-              fontSize: 24,
+              position: 'outside',
+             formatter: '{b}: {d}%',
+              fontSize: 14,
             },
+            labelLine: { show: true,  },
             data: [
               { value: '926.48', name: '化石燃料燃烧排放', itemStyle: { color: '#5BC0BE' } },
               { value: '7.72', name: '净购热力排放', itemStyle: { color: '#7353BA' } },
