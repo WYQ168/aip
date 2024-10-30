@@ -38,15 +38,174 @@
     </div>
 
     <!-- 新增/编辑对话框 -->
-    <el-dialog :title="isEdit ? '编辑设置项' : '新增设置项'" :visible.sync="dialogVisible">
-      <el-form :model="currentFactor" label-width="120px">
-        <el-form-item label="设置项" required>
-          <el-input v-model="currentFactor.settingItem" />
-        </el-form-item>
-        <el-form-item label="设置内容" required>
-          <el-input v-model="currentFactor.settingContent" />
-        </el-form-item>
-      </el-form>
+    <el-dialog :title="isEdit ? '排放因子输入设置' : '新增排放因子'" :visible.sync="dialogVisible">
+      <template>
+        <el-form :model="form" label-width="120px">
+          <el-row :gutter="20">
+            <el-col :span="24">
+              <el-form-item label="碳氧化率">
+                <el-row :gutter="10" align="middle">
+                  <el-col :span="3">
+                    <el-switch v-model="form.carbonRate.isRealValue" />
+                    <span>实测值</span>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10">
+                  <el-col :span="8">
+                    <div>数据值</div>
+                    <el-input v-model="form.carbonRate.value" placeholder="请输入数据值" style="width: 220px"  size="small"></el-input>
+                  </el-col>
+                  <el-col :span="4">
+                    <div>单位</div>
+                    <el-select v-model="form.carbonRate.unit" placeholder="请选择单位" size="small">
+                      <el-option label="%" value="%"></el-option>
+                    </el-select>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10" style="margin-top: 10px;">
+                  <el-col :span="8">
+                    <div>有效数字</div>
+                    <el-select v-model="form.carbonRate.significantFigures" placeholder="请选择有效数字" size="small">
+                      <el-option label="下拉框" value="下拉框"></el-option>
+                    </el-select>
+                  </el-col>
+                  <el-col :span="8">
+                    <div>有效阈值</div>
+                    <el-input v-model="form.carbonRate.rangeMin"  style="width: 170px" placeholder="最小值" size="small"></el-input>
+                    -
+                    <el-input v-model="form.carbonRate.rangeMax" style="width: 170px" placeholder="最大值" size="small"></el-input>
+                  </el-col>
+                </el-row>
+              </el-form-item>
+            </el-col>
+
+            <el-col :span="24">
+              <el-form-item>
+                <el-radio v-model="form.calculationMethod" label="计算方式一">计算方式一</el-radio>
+              </el-form-item>
+            </el-col>
+
+            <el-col :span="24">
+              <el-form-item label="低位发热量">
+                <el-row :gutter="10" align="middle">
+                  <el-col :span="3">
+                    <el-switch v-model="form.lowerCalorificValue.isRealValue" />
+                    <span>实测值</span>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10">
+                  <el-col :span="8">
+                    <div>数据值</div>
+                    <el-input v-model="form.lowerCalorificValue.value" placeholder="请输入数据值"  style="width: 220px"  size="small"></el-input>
+                  </el-col>
+                  <el-col :span="4">
+                    <div>单位</div>
+                    <el-select v-model="form.lowerCalorificValue.unit" placeholder="请选择单位" size="small">
+                      <el-option label="GJ/t (缺省值)" value="GJ/t"></el-option>
+                    </el-select>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10" style="margin-top: 10px;">
+                  <el-col :span="8">
+                    <div>有效数字</div>
+                    <el-select v-model="form.lowerCalorificValue.significantFigures" placeholder="请选择有效数字" size="small">
+                      <el-option label="4 (缺省值)" value="4"></el-option>
+                    </el-select>
+                  </el-col>
+                  <el-col :span="8">
+                    <div>有效阈值</div>
+                    <el-input v-model="form.lowerCalorificValue.rangeMin"  style="width: 170px"   placeholder="最小值" size="small"></el-input>
+                    -
+                    <el-input v-model="form.lowerCalorificValue.rangeMax"   style="width: 170px"  placeholder="最大值" size="small"></el-input>
+                  </el-col>
+                </el-row>
+              </el-form-item>
+            </el-col>
+
+            <el-col :span="24">
+              <el-form-item label="单位热值含碳量">
+                <el-row :gutter="10" align="middle">
+                  <el-col :span="3">
+                    <el-switch v-model="form.unitHeatValueCarbon.isRealValue" />
+                    <span>实测值</span>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10">
+                  <el-col :span="8">
+                    <div>数据值</div>
+                    <el-input v-model="form.unitHeatValueCarbon.value"  style="width: 220px" placeholder="请输入数据值" size="small"></el-input>
+                  </el-col>
+                  <el-col :span="4">
+                    <div>单位</div>
+                    <el-select v-model="form.unitHeatValueCarbon.unit" placeholder="请选择单位" size="small">
+                      <el-option label="默认为C/GJ" value="默认为C/GJ"></el-option>
+                    </el-select>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10" style="margin-top: 10px;">
+                  <el-col :span="8">
+                    <div>有效数字</div>
+                    <el-select v-model="form.unitHeatValueCarbon.significantFigures" placeholder="请选择有效数字" size="small">
+                      <el-option label="4 (默认)" value="4"></el-option>
+                    </el-select>
+                  </el-col>
+                  <el-col :span="8">
+                    <div>有效阈值</div>
+                    <el-input v-model="form.unitHeatValueCarbon.rangeMin"  style="width: 170px" placeholder="最小值" size="small"></el-input>
+                    -
+                    <el-input v-model="form.unitHeatValueCarbon.rangeMax"  style="width: 170px" placeholder="最大值" size="small"></el-input>
+                  </el-col>
+                </el-row>
+              </el-form-item>
+            </el-col>
+
+            <el-col :span="24">
+              <el-form-item>
+                <el-radio v-model="form.calculationMethod" label="计算方式二">计算方式二</el-radio>
+              </el-form-item>
+            </el-col>
+
+            <el-col :span="24">
+              <el-form-item label="收到基元素含碳量">
+                <el-row :gutter="10" align="middle">
+                  <el-col :span="3">
+                    <el-switch v-model="form.receivedElementCarbon.isRealValue" />
+                    <span>实测值</span>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10">
+                  <el-col :span="8">
+                    <div>数据值</div>
+                    <el-input v-model="form.receivedElementCarbon.value" style="width: 220px"  placeholder="请输入数据值" size="small"></el-input>
+                  </el-col>
+                  <el-col :span="4">
+                    <div>单位</div>
+                    <el-select v-model="form.receivedElementCarbon.unit" placeholder="请选择单位" size="small">
+                      <el-option label="下拉框 (缺省值)" value="下拉框"></el-option>
+                    </el-select>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10" style="margin-top: 10px;">
+                  <el-col :span="8">
+                    <div>有效数字</div>
+                    <el-select v-model="form.receivedElementCarbon.significantFigures" placeholder="请选择有效数字" size="small">
+                      <el-option label="4 (缺省值)" value="4"></el-option>
+                    </el-select>
+                  </el-col>
+                  <el-col :span="8">
+                    <div>有效阈值</div>
+                    <el-input v-model="form.receivedElementCarbon.rangeMin" style="width: 170px"  placeholder="最小值" size="small"></el-input>
+                    -
+                    <el-input v-model="form.receivedElementCarbon.rangeMax"  style="width: 170px" placeholder="最大值" size="small"></el-input>
+                  </el-col>
+                </el-row>
+              </el-form-item>
+            </el-col>
+          </el-row>
+
+        </el-form>
+      </template>
+
       <template #footer>
         <el-button @click="cancelDialog">取消</el-button>
         <el-button type="primary" @click="saveFactor" :disabled="!isFormValid">保存</el-button>
@@ -55,6 +214,11 @@
   </div>
 </template>
 
+<style scoped>
+.el-form-item {
+  margin-bottom: 20px;
+}
+</style>
 <script>
 export default {
   data() {
@@ -69,6 +233,41 @@ export default {
         settingItem: '',
         settingContent: '',
       },
+      form: {
+        carbonRate: {
+          isRealValue: false,
+          value: '',
+          unit: '%',
+          significantFigures: '',
+          rangeMin: '',
+          rangeMax: ''
+        },
+        calculationMethod: '计算方式一',
+        lowerCalorificValue: {
+          isRealValue: true,
+          value: '',
+          unit: 'GJ/t',
+          significantFigures: '',
+          rangeMin: '',
+          rangeMax: ''
+        },
+        unitHeatValueCarbon: {
+          isRealValue: false,
+          value: '',
+          unit: '默认为C/GJ',
+          significantFigures: '',
+          rangeMin: '',
+          rangeMax: ''
+        },
+        receivedElementCarbon: {
+          isRealValue: false,
+          value: '',
+          unit: '下拉框',
+          significantFigures: '',
+          rangeMin: '',
+          rangeMax: ''
+        }
+      }
     };
   },
   computed: {
@@ -134,6 +333,12 @@ export default {
     deleteFactor(index) {
       this.factors.splice(index, 1);
     },
+    onSave() {
+      console.log('保存数据', this.form);
+    },
+    onCancel() {
+      console.log('取消操作');
+    }
   },
 };
 </script>
