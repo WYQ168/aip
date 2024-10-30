@@ -25,16 +25,19 @@
       </div>
 
       <el-table :data="tableData" border style="width: 100%; margin-top: 10px;">
-        <el-table-column prop="工艺表" label="碳排放工艺表" />
-        <el-table-column prop="来源" label="来源" />
-        <el-table-column prop="数据量" label="数据量" />
-        <el-table-column prop="备注" label="备注" />
-        <el-table-column label="操作" width="150">
-          <template #default="scope">
-            <el-button type="text" icon="el-icon-edit" @click="editRecord(scope.$index)"></el-button>
-            <el-button type="text" icon="el-icon-delete" @click="deleteRecord(scope.$index)"></el-button>
-          </template>
-        </el-table-column>
+        <el-table-column prop="工艺表" label=" " />
+        <el-table-column prop="一月" label="1月" />
+        <el-table-column prop="二月" label="2月" />
+        <el-table-column prop="三月" label="3月" />
+        <el-table-column prop="四月" label="4月" />
+        <el-table-column prop="五月" label="5月" />
+        <el-table-column prop="六月" label="6月" />
+        <el-table-column prop="七月" label="7月" />
+        <el-table-column prop="八月" label="8月" />
+        <el-table-column prop="九月" label="9月" />
+        <el-table-column prop="十月" label="10月" />
+        <el-table-column prop="十一月" label="11月" />
+        <el-table-column prop="十二月" label="12月" />
       </el-table>
     </el-card>
   </div>
@@ -99,7 +102,7 @@ export default {
         yAxis: [
           {
             type: 'value',
-            name: '销售额 (万元)',
+            name: '碳排放量(tCO2)',
             position: 'left',
             axisLine: { lineStyle: { color: '#5470C6' } },
             splitLine: { lineStyle: { type: 'dashed' } },
@@ -167,18 +170,45 @@ export default {
       return data;
     },
     generateRandomTableData() {
-      const records = [];
-      const 工艺表 = ["焦化", "钢铁", "水泥", "电力", "化工", "冶金"];
-      for (let i = 0; i < 10; i++) {
-        records.push({
-          工艺表: 工艺表[Math.floor(Math.random() * 工艺表.length)],
-          来源: `数据来源 ${i + 1}`,
-          数据量: Math.floor(Math.random() * 10000),
-          备注: `备注信息 ${i + 1}`,
-        });
-      }
-      return records;
-    },
+  const records = [];
+  const 工艺表 = [
+    "化石燃料燃烧排放",
+    "工业过程排放",
+    "净购入电力排放",
+    "净购热力排放",
+    "固碳产品隐含排放",
+    "碳排放总量"
+  ];
+  const data = [
+    [641128.7, 551701.8, 725216.4, 877698.9, 972821.7, 893147.4, 873880.1, 951481.7, 952006.1, 920070.1,767932.7,499076.19],
+    [40053.67, 27802.79, 45775.44, 66979.3, 68060.87, 62496.83, 64599.76, 59817.75, 53821.17, 56307.11,51144.99,40574.38],
+    [35893.68, 36951.99, 56340.69, 62160.65, 66955.66, 57967.74, 54665.1, 50284, 47230.3, 55103.3, 64128.29, 67845.31],
+    [-17417.6, -14128.08, -8511.56, -2505.08, -2411.82, -2101.9, -2172.67, -2516.79, -2517.77, -2586.88, -5657.32,-14686.65],
+    [5564.81, 4733.38, 5725, 6783.02, 7828.49, 6743.89, 6607.86, 7398.01, 7160.85, 7185.02, 6042.16 ,3702.22],
+    [694094, 597595, 813096, 997551, 1097598, 1004766, 984364, 1051669, 1043379, 1021709,871507,589107]
+  ];
+
+  for (let i = 0; i < 工艺表.length; i++) {
+    records.push({
+      工艺表: 工艺表[i],
+      一月: data[i][0],
+      二月: data[i][1],
+      三月: data[i][2],
+      四月: data[i][3],
+      五月: data[i][4],
+      六月: data[i][5],
+      七月: data[i][6],
+      八月: data[i][7],
+      九月: data[i][8],
+      十月: data[i][9],
+      十一月: data[i][10],
+      十二月: data[i][11],
+    });
+  }
+
+  return records;
+}
+,
     generateRandomData() {
       return Array.from({ length: 12 }, () => Math.floor(Math.random() * 6000));
     },

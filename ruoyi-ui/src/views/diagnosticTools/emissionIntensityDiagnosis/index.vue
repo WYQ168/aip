@@ -26,12 +26,19 @@
     <!-- 碳排放表格 -->
     <el-card class="table-card" style="margin-top: 30px;">
       <div class="table-header">
-        <h3>碳排放总量诊断</h3>
+        <h3>工序碳排放强度诊断</h3>
       </div>
       <el-table :data="tableData" border style="width: 100%; margin-top: 10px;">
-        <el-table-column prop="项目" label="项目" />
-        <el-table-column prop="数量" label="数量" />
-        <el-table-column prop="单价" label="单价" />
+        <el-table-column prop="工序" label="工序" />
+        <el-table-column prop="强度数据" label="强度数据" />
+        <el-table-column prop="诊断" label="诊断" />
+        <el-table-column prop="标杆水平" label="标杆水平" />
+        <el-table-column prop="单位" label="单位" />
+        <el-table-column prop="统计周期" label="统计周期" />
+        <el-table-column prop="操作" label="操作" >
+          <el-button type="text" icon="el-icon-view" @click="openDialog('edit', scope.$index)">查看</el-button>
+          <el-button type="primary" @click="saveRecord">导出</el-button>
+        </el-table-column>
       </el-table>
     </el-card>
   </div>
@@ -42,14 +49,14 @@ export default {
   data() {
     return {
       tableData: [
-        { 项目: "当前碳排放总量", 数量: "10000", 单价: "" },
-        { 项目: "碳排放配额", 数量: "8000", 单价: "" },
-        { 项目: "CCER抵消量", 数量: "400", 单价: "" },
-        { 项目: "绿电证抵消量", 数量: "600", 单价: "" },
-        { 项目: "碳管惠", 数量: "?", 单价: "" },
-        { 项目: "VCS", 数量: "?", 单价: "" },
-        { 项目: "碳排放履约缺口", 数量: "1000", 单价: "" },
-        { 项目: "总计", 数量: "xxx", 单价: "xxx" },
+        { 工序: "烧结", 强度数据: "0.2130", 诊断: "↑", 标杆水平: "0.16", 单位:"t/t", 统计周期:"年", 操作: "查看"},
+        { 工序: "球团", 强度数据: "0.1904", 诊断: "↑", 标杆水平: "0.21" , 单位:"t/t", 统计周期:"年", 操作:"查看"},
+        { 工序: "高炉炼铁", 强度数据: "0.8625", 诊断: "" , 标杆水平: "1.56", 单位:"t/t", 统计周期:"年", 操作:"查看"},
+        { 工序: "转炉炼钢", 强度数据: "-0.1780", 诊断: "↓" , 标杆水平: "-0.03", 单位:"t/t", 统计周期:"年", 操作:"查看"},
+        { 工序: "精炼", 强度数据: "0.0220", 诊断: "" , 标杆水平: "0.04", 单位:"t/t", 统计周期:"年", 操作:"查看"},
+        { 工序: "连铸", 强度数据: "0.0095", 诊断: "" , 标杆水平: "...", 单位:"t/t", 统计周期:"年", 操作:"查看"},
+        { 工序: "钢压延加工", 强度数据: "0.3392", 诊断: "", 标杆水平: "...", 单位:"t/t", 统计周期:"年", 操作:"查看" },
+        { 工序: "石灰", 强度数据: "0.5566", 诊断: "" , 标杆水平: "...", 单位:"t/t", 统计周期:"年", 操作:"查看"}
       ],
     };
   },
