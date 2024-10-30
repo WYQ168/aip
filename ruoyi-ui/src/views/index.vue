@@ -54,13 +54,13 @@ export default {
       userActionByPageOptions: {
         tooltip: { trigger: 'axis' },
         legend: {
-          data: ['Overall', 'Sidebar', 'Search'],
+          data: ['排放量', '直接排放', '间接排放'],
           bottom: 0,
           icon: 'circle',
         },
         xAxis: {
           type: 'category',
-          data: ['Landing Page', 'Download Page', 'App Install', 'App Open'],
+          data: ['January ', 'February ', 'March ', 'April '],
           axisLine: { lineStyle: { color: '#ccc' } },
         },
         yAxis: {
@@ -69,19 +69,19 @@ export default {
         },
         series: [
           {
-            name: 'Overall',
+            name: '排放量',
             type: 'bar',
             data: [5000, 3000, 2000, 4000],
             itemStyle: { color: '#7353BA' },
           },
           {
-            name: 'Sidebar',
+            name: '直接排放',
             type: 'bar',
             data: [4000, 2000, 1000, 3000],
             itemStyle: { color: '#F47C7C' },
           },
           {
-            name: 'Search',
+            name: '间接排放',
             type: 'bar',
             data: [3000, 1000, 500, 2000],
             itemStyle: { color: '#5BC0BE' },
@@ -136,7 +136,7 @@ export default {
         },
         xAxis: {
           type: 'category',
-          data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          data: ['Jan', 'Feb', 'Mon', 'Apr', 'May', 'Jun', 'Jul','Aug'],
           axisLine: { lineStyle: { color: '#ccc' } },
         },
         yAxis: {
@@ -147,42 +147,42 @@ export default {
           {
             name: '化石燃料燃烧',
             type: 'line',
-            data: [5000, 6000, 7000, 6500, 6000, 5500, 6000],
+            data: [5000, 6000, 7000, 6500, 6000, 5500, 6000,6500],
             itemStyle: { color: '#7353BA' },
             smooth: true,
           },
           {
             name: '工业过程排放',
             type: 'line',
-            data: [4000, 4500, 5000, 4000, 3500, 4000, 5000],
+            data: [4000, 4500, 5000, 4000, 3500, 4000, 5000,4500],
             itemStyle: { color: '#F47C7C' },
             smooth: true,
           },
           {
             name: '净购入电力排放',
             type: 'line',
-            data: [-2000, -2500, -3000, -2000, -1500, -2000, -2500],
+            data: [-2000, -2500, -3000, -2000, -1500, -2000, -2500,-1800],
             itemStyle: { color: '#5BC0BE' },
             smooth: true,
           },
           {
             name: '净购热力排放',
             type: 'line',
-            data: [1000, 1500, 2000, 1500, 1000, 1200, 1100],
+            data: [1000, 1500, 2000, 1500, 1000, 1200, 1100,1150],
             itemStyle: { color: '#FFA07A' },
             smooth: true,
           },
           {
             name: '固碳产品隐含排放',
             type: 'line',
-            data: [3000, 3500, 4000, 3500, 3000, 2800, 2900],
+            data: [3000, 3500, 4000, 3500, 3000, 2800, 2900,3200],
             itemStyle: { color: '#20B2AA' },
             smooth: true,
           },
           {
             name: '二氧化碳排旋量',
             type: 'line',
-            data: [6000, 6500, 7000, 6500, 6000, 5800, 5900],
+            data: [6000, 6500, 7000, 6500, 6000, 5800, 5900,6400],
             itemStyle: { color: '#FF4500' },
             smooth: true,
           },
@@ -207,11 +207,11 @@ export default {
               fontSize: 24,
             },
             data: [
-              { value: 926.48, name: '化石燃料燃烧排放', itemStyle: { color: '#5BC0BE' } },
-              { value: 7.72, name: '净购热力排放', itemStyle: { color: '#7353BA' } },
-              { value: 65.55, name: '净购入电力排放', itemStyle: { color: '#F47C7C' } },
-              { value: 7.54, name: '固碳产品隐含排放', itemStyle: { color: '#E0E0E0' } },
-              { value: 69.74, name: '工业过程排放', itemStyle: { color: '#a11c1c' } },
+              { value: '926.48', name: '化石燃料燃烧排放', itemStyle: { color: '#5BC0BE' } },
+              { value: '7.72', name: '净购热力排放', itemStyle: { color: '#7353BA' } },
+              { value: '65.55', name: '净购入电力排放', itemStyle: { color: '#F47C7C' } },
+              { value: '7.54', name: '固碳产品隐含排放', itemStyle: { color: '#E0E0E0' } },
+              { value: '69.74', name: '工业过程排放', itemStyle: { color: '#a11c1c' } },
             ],
           },
         ],

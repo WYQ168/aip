@@ -17,8 +17,10 @@
         </el-col>
       </el-row>
     </div>
+    <br/>
 
     <div>
+      <h3>持有资产表</h3>
       <el-table :data="tableData" style="width: 100%">
         <el-table-column prop="serialNumber" label="序号" ></el-table-column>
         <el-table-column prop="assetName" label="碳资产名称" ></el-table-column>
@@ -30,6 +32,31 @@
         <el-table-column prop="price" label="单价" ></el-table-column>
         <el-table-column prop="assetScale" label="持有资产规模（万元）" ></el-table-column>
       </el-table>
+
+      <p style="text-align: right;">单价取相关产品在对应市场近3个月成交价平均值，随市场变动。</p>
+    </div>
+    <br/>
+
+    <div>
+      <h3>成本表</h3>
+      <el-table :data="tableData2" style="width: 100%; margin-bottom: 20px;"  :span-method="mergeCells">
+        <el-table-column prop="actualEmissions" label="实际排放 (tCO2)" ></el-table-column>
+        <el-table-column prop="allocation" label="分配配额 (tCO2)" ></el-table-column>
+        <el-table-column prop="allocation" label="缺口 (tCO2)" ></el-table-column>
+        <el-table-column prop="shortfall" label="购入CCER成本" >
+          <el-table-column prop="purchaseAmountCCER" label="购入量 (tCO2)" ></el-table-column>
+          <el-table-column prop="unitPriceCCER" label="单价 (元/tCO2)" ></el-table-column>
+          <el-table-column prop="costCCER" label="成本 (元)" ></el-table-column>
+        </el-table-column>
+        <el-table-column prop="purchaseCEA" label="购入CEA成本">
+          <el-table-column prop="purchaseAmountCEA" label="购入量 (tCO2)" ></el-table-column>
+          <el-table-column prop="unitPriceCEA" label="单价 (元/tCO2)" ></el-table-column>
+          <el-table-column prop="costCEA" label="成本 (元)" ></el-table-column>
+        </el-table-column>
+      </el-table>
+
+      <p style="text-align: right;">注：根据国家相关规定，CCER购入量最大不得超过配额的5%</p>
+      <p style="text-align: right;">CCER、CEA单价取自其在对应市场近3个月成交价平均值，随市场变动。</p>
     </div>
 
   </div>
@@ -109,6 +136,19 @@ export default {
           price: '10元/张',
           assetScale: 0.2
         }
+      ],
+      tableData2: [
+        {
+          actualEmissions: 200000,
+          allocation: 180000,
+          shortfall: 20000,
+          purchaseAmountCCER: 9000,
+          unitPriceCCER: 63,
+          costCCER: 567000,
+          purchaseAmountCEA: '',
+          unitPriceCEA: '',
+          costCEA: ''
+        }
       ]
 
     };
@@ -122,6 +162,18 @@ export default {
       this.chartInstance = echarts.init(chartDom);
 
       this.updateChart(); // 初始化时加载默认年份数据
+    },
+    mergeCells({ row, column, rowIndex, columnIndex }) {
+      if (columnIndex === 0 || columnIndex === 1 || columnIndex === 2) {
+        return {
+          rowspan: 2,
+          colspan: 1
+        };
+      }
+      return {
+        rowspan: 1,
+        colspan: 1
+      };
     },
     updateChart() {
       const year = this.selectedYear;

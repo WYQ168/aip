@@ -12,7 +12,7 @@
     <!-- 碳排放总量记录表 -->
     <el-card class="table-card" style="margin-top: 30px;">
       <div class="table-header">
-        <h3>碳排放总量记录</h3>
+        <h3>碳排放活动类型</h3>
         <div class="table-selectors">
           <el-select v-model="selectedYear" @change="loadData" placeholder="选择年份">
             <el-option v-for="year in years" :key="year" :label="year" :value="year" />
@@ -40,7 +40,25 @@
         <el-table-column prop="十二月" label="12月" />
       </el-table>
     </el-card>
+<br/>
+
+    <el-card class="table-card" style="margin-top: 30px;">
+      <h3>工序碳排放量</h3>
+    <div>
+      <el-table :data="tableData2" style="width: 100%;">
+        <el-table-column prop="process" label=" "></el-table-column>
+        <el-table-column prop="jan" label="1月"></el-table-column>
+        <el-table-column prop="feb" label="2月"></el-table-column>
+        <el-table-column prop="mar" label="3月"></el-table-column>
+        <el-table-column prop="apr" label="4月"></el-table-column>
+        <el-table-column prop="may" label="5月"></el-table-column>
+        <el-table-column prop="more" label="......"></el-table-column>
+      </el-table>
+    </div>
+    </el-card>
   </div>
+
+
 </template>
 
 <script>
@@ -54,6 +72,17 @@ export default {
       years: ["2022年", "2023年", "2024年"],
       months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
       tableData: [],
+      tableData2: [
+        { process: '烧结', jan: 528487, feb: 62609, mar: 113736, apr: 131658, may: 128173 ,more: '......'},
+        { process: '球团', jan: 17429, feb: 17121, mar: 20644, apr: 27090, may: 29077 ,more: '......'},
+        { process: '高炉炼铁', jan: 190948, feb: 141689, mar: 337233, apr: 399810, may: 454660 ,more: '......'},
+        { process: '转炉炼钢', jan: -48442, feb: -30128, mar: -67550, apr: -75349, may: -84706 ,more: '......'},
+        { process: '精炼', jan: 7857, feb: 5989, mar: 8237, apr: 10285, may: 11682 ,more: '......'},
+        { process: '连铸', jan: 3461, feb: 2624, mar: 3553, apr: 4447, may: 5025 ,more: '......'},
+        { process: '钢坯延加工', jan: 124056, feb: 100216, mar: 22437, apr: 155762, may: 177975 ,more: '......'},
+        { process: '石灰', jan: 29049, feb: 20983, mar: 31656, apr: 39308, may: 39637 ,more: '......'},
+        { process: '全部工序CO2排放量', jan: 852845, feb: 321103, mar: 469945, apr: 693011, may: 761523 ,more: '......'}
+      ],
       allData: this.generateAllData(), // 生成所有年份和月份的数据
     };
   },
@@ -260,5 +289,8 @@ export default {
 
 .el-table {
   margin-top: 10px;
+}
+.el-table th, .el-table td {
+  text-align: center;
 }
 </style>

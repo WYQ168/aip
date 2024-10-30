@@ -21,8 +21,8 @@
 
     <!-- 智能履约建议 -->
     <el-card class="suggestion-section" style="margin-top: 30px;">
-      <h2><el-icon><i class="el-icon-guide"></i></el-icon> 履约建议</h2>
-      <el-button type="primary" style="float: right;position:relative;top:-50px;" @click="generateSuggestions">生成建议</el-button>
+      <h2><el-icon><i class="el-icon-guide"></i></el-icon> 履约方案</h2>
+      <el-button type="primary" style="float: right;position:relative;top:-50px;" @click="generateSuggestions">生成方案</el-button>
       <el-row :gutter="20" class="suggestion-group">
         <el-col :span="24">
           <el-card class="suggestion-card">

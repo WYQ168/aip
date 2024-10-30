@@ -33,7 +33,7 @@
           <el-input v-model="currentRecord.type" placeholder="请输入碳资产类型"/>
         </el-form-item>
         <el-form-item label="项目编号">
-          <el-input v-model="currentRecord.number" placeholder="请输入项目编号"/>
+          <el-input v-model="currentRecord.remark" placeholder="请输入项目编号"/>
         </el-form-item>
         <el-form-item label="来源">
           <el-input v-model="currentRecord.source" placeholder="请输入来源"/>
@@ -45,7 +45,7 @@
           <el-input v-model="currentRecord.buy" placeholder="请输入数据量" type="number"/>
         </el-form-item>
         <el-form-item label="备注">
-          <el-input v-model="currentRecord.remark" placeholder="请输入备注"/>
+          <el-input v-model="currentRecord.number" placeholder="请输入备注"/>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -68,10 +68,10 @@ export default {
       editIndex: -1,
       currentRecord: {type: "", source: "", quantity: "", remark: ""},
       tableData: [
-        {type: "碳配额 (CEA)", source: "省生态厅发放", quantity: 546, remark: "总量配额"},
-        {type: "中国核证自愿减排量 CCER", source: "CCER 市场购买", quantity: 457, remark: "CCER购买量"},
-        {type: "国际核证自愿减排量 VCS", source: "VERRA 认证", quantity: 386, remark: "VCS购买量"},
-        {type: "核证绿电购买量", source: "绿证市场购买", quantity: 64, remark: "绿电购买"},
+        {type: "碳配额 (CEA)", source: "省生态厅发放", quantity: 546, remark: "HZJP00001"},
+        {type: "中国核证自愿减排量 CCER", source: "CCER 市场购买", quantity: 457, remark: "GRJPL0002"},
+        {type: "国际核证自愿减排量 VCS", source: "VERRA 认证", quantity: 386, remark: "GRVCS0021"},
+        {type: "核证绿电购买量", source: "绿证市场购买", quantity: 64, remark: "GRLD0011"},
       ],
     };
   },
