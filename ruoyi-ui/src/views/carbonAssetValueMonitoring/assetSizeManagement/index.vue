@@ -16,7 +16,7 @@
     <!-- 碳资产表格 -->
     <el-table :data="tableData" border style="width: 100%; margin-top: 20px;">
       <el-table-column prop="type" label="碳资产类型" />
-      <el-table-column prop="quantity" label="数据" />
+      <el-table-column prop="quantity" label="资产规模(万元)" />
       <el-table-column prop="remark" label="项目编号" />
       <el-table-column label="操作" width="150">
         <template #default="scope">
@@ -32,11 +32,17 @@
         <el-form-item label="碳资产类型">
           <el-input v-model="currentRecord.type" placeholder="请输入碳资产类型"/>
         </el-form-item>
+        <el-form-item label="项目编号">
+          <el-input v-model="currentRecord.number" placeholder="请输入项目编号"/>
+        </el-form-item>
         <el-form-item label="来源">
           <el-input v-model="currentRecord.source" placeholder="请输入来源"/>
         </el-form-item>
-        <el-form-item label="数据量">
-          <el-input v-model="currentRecord.quantity" placeholder="请输入数据量" type="number"/>
+        <el-form-item label="计入期">
+          <el-input v-model="currentRecord.quantity" placeholder="请输入周期" type="number"/>
+        </el-form-item>
+        <el-form-item label="对应减排量/购买量">
+          <el-input v-model="currentRecord.buy" placeholder="请输入数据量" type="number"/>
         </el-form-item>
         <el-form-item label="备注">
           <el-input v-model="currentRecord.remark" placeholder="请输入备注"/>

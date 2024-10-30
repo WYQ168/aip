@@ -18,9 +18,24 @@
       </el-row>
     </div>
 
+    <div>
+      <el-table :data="tableData" style="width: 100%">
+        <el-table-column prop="serialNumber" label="序号" ></el-table-column>
+        <el-table-column prop="assetName" label="碳资产名称" ></el-table-column>
+        <el-table-column prop="projectCode" label="项目编号" ></el-table-column>
+        <el-table-column prop="entryPeriod" label="计入期" ></el-table-column>
+        <el-table-column prop="holdings" label="持有量" ></el-table-column>
+        <el-table-column prop="unit" label="单位" ></el-table-column>
+        <el-table-column prop="description" label="说明" ></el-table-column>
+        <el-table-column prop="price" label="单价" ></el-table-column>
+        <el-table-column prop="assetScale" label="持有资产规模（万元）" ></el-table-column>
+      </el-table>
+    </div>
 
   </div>
+
 </template>
+
 
 <script>
 import * as echarts from "echarts";
@@ -49,6 +64,53 @@ export default {
           深圳: [3000, 3200, 3400, 3500, 3700, 4000],
         },
       },
+      tableData: [
+        {
+          serialNumber: 1,
+          assetName: 'CCER开发',
+          projectCode: 'HZJP00001',
+          entryPeriod: '2020-2025',
+          holdings: 23432,
+          unit: 'tCO2',
+          description: '企业持有',
+          price: '68.13元/吨',
+          assetScale: 159.64
+        },
+        {
+          serialNumber: 2,
+          assetName: 'CCER购入',
+          projectCode: 'GRJPL0002',
+          entryPeriod: '2019-2024',
+          holdings: 10000,
+          unit: 'tCO2',
+          description: '企业购入',
+          price: '58元/吨',
+          assetScale: 58
+        },
+        {
+          serialNumber: 3,
+          assetName: 'VCS购入',
+          projectCode: 'GRVCS0021',
+          entryPeriod: '2018-2023',
+          holdings: 20000,
+          unit: 'tCO2',
+          description: '企业购入',
+          price: '25.32元/吨',
+          assetScale: 50.64
+        },
+        {
+          serialNumber: 4,
+          assetName: '绿证购入',
+          projectCode: 'GRLD0011',
+          entryPeriod: '2024.1-2024.12',
+          holdings: 200,
+          unit: '张',
+          description: '企业购入',
+          price: '10元/张',
+          assetScale: 0.2
+        }
+      ]
+
     };
   },
   mounted() {

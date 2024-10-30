@@ -53,7 +53,7 @@
                 <el-row :gutter="10">
                   <el-col :span="8">
                     <div>数据值</div>
-                    <el-input v-model="form.carbonRate.value" placeholder="请输入数据值" style="width: 220px"  size="small"></el-input>
+                    <el-input v-model="form.carbonRate.value" placeholder="请输入数据值"  size="small"></el-input>
                   </el-col>
                   <el-col :span="4">
                     <div>单位</div>
@@ -71,9 +71,9 @@
                   </el-col>
                   <el-col :span="8">
                     <div>有效阈值</div>
-                    <el-input v-model="form.carbonRate.rangeMin"  style="width: 170px" placeholder="最小值" size="small"></el-input>
+                    <el-input v-model="form.carbonRate.rangeMin"   placeholder="最小值" size="small"></el-input>
                     -
-                    <el-input v-model="form.carbonRate.rangeMax" style="width: 170px" placeholder="最大值" size="small"></el-input>
+                    <el-input v-model="form.carbonRate.rangeMax"  placeholder="最大值" size="small"></el-input>
                   </el-col>
                 </el-row>
               </el-form-item>
@@ -96,7 +96,7 @@
                 <el-row :gutter="10">
                   <el-col :span="8">
                     <div>数据值</div>
-                    <el-input v-model="form.lowerCalorificValue.value" placeholder="请输入数据值"  style="width: 220px"  size="small"></el-input>
+                    <el-input v-model="form.lowerCalorificValue.value" placeholder="请输入数据值"   size="small"></el-input>
                   </el-col>
                   <el-col :span="4">
                     <div>单位</div>
@@ -114,9 +114,9 @@
                   </el-col>
                   <el-col :span="8">
                     <div>有效阈值</div>
-                    <el-input v-model="form.lowerCalorificValue.rangeMin"  style="width: 170px"   placeholder="最小值" size="small"></el-input>
+                    <el-input v-model="form.lowerCalorificValue.rangeMin"     placeholder="最小值" size="small"></el-input>
                     -
-                    <el-input v-model="form.lowerCalorificValue.rangeMax"   style="width: 170px"  placeholder="最大值" size="small"></el-input>
+                    <el-input v-model="form.lowerCalorificValue.rangeMax"     placeholder="最大值" size="small"></el-input>
                   </el-col>
                 </el-row>
               </el-form-item>
@@ -133,7 +133,7 @@
                 <el-row :gutter="10">
                   <el-col :span="8">
                     <div>数据值</div>
-                    <el-input v-model="form.unitHeatValueCarbon.value"  style="width: 220px" placeholder="请输入数据值" size="small"></el-input>
+                    <el-input v-model="form.unitHeatValueCarbon.value"  placeholder="请输入数据值" size="small"></el-input>
                   </el-col>
                   <el-col :span="4">
                     <div>单位</div>
@@ -151,9 +151,9 @@
                   </el-col>
                   <el-col :span="8">
                     <div>有效阈值</div>
-                    <el-input v-model="form.unitHeatValueCarbon.rangeMin"  style="width: 170px" placeholder="最小值" size="small"></el-input>
+                    <el-input v-model="form.unitHeatValueCarbon.rangeMin"   placeholder="最小值" size="small"></el-input>
                     -
-                    <el-input v-model="form.unitHeatValueCarbon.rangeMax"  style="width: 170px" placeholder="最大值" size="small"></el-input>
+                    <el-input v-model="form.unitHeatValueCarbon.rangeMax"   placeholder="最大值" size="small"></el-input>
                   </el-col>
                 </el-row>
               </el-form-item>
@@ -176,7 +176,7 @@
                 <el-row :gutter="10">
                   <el-col :span="8">
                     <div>数据值</div>
-                    <el-input v-model="form.receivedElementCarbon.value" style="width: 220px"  placeholder="请输入数据值" size="small"></el-input>
+                    <el-input v-model="form.receivedElementCarbon.value"  placeholder="请输入数据值" size="small"></el-input>
                   </el-col>
                   <el-col :span="4">
                     <div>单位</div>
@@ -194,9 +194,9 @@
                   </el-col>
                   <el-col :span="8">
                     <div>有效阈值</div>
-                    <el-input v-model="form.receivedElementCarbon.rangeMin" style="width: 170px"  placeholder="最小值" size="small"></el-input>
+                    <el-input v-model="form.receivedElementCarbon.rangeMin"   placeholder="最小值" size="small"></el-input>
                     -
-                    <el-input v-model="form.receivedElementCarbon.rangeMax"  style="width: 170px" placeholder="最大值" size="small"></el-input>
+                    <el-input v-model="form.receivedElementCarbon.rangeMax"   placeholder="最大值" size="small"></el-input>
                   </el-col>
                 </el-row>
               </el-form-item>
@@ -235,7 +235,7 @@ export default {
       },
       form: {
         carbonRate: {
-          isRealValue: false,
+          isRealValue: true,
           value: '',
           unit: '%',
           significantFigures: '',
@@ -244,7 +244,7 @@ export default {
         },
         calculationMethod: '计算方式一',
         lowerCalorificValue: {
-          isRealValue: true,
+          isRealValue: false,
           value: '',
           unit: 'GJ/t',
           significantFigures: '',
@@ -252,7 +252,7 @@ export default {
           rangeMax: ''
         },
         unitHeatValueCarbon: {
-          isRealValue: false,
+          isRealValue: true,
           value: '',
           unit: '默认为C/GJ',
           significantFigures: '',
